@@ -1,0 +1,7 @@
+version: '3.6'
+services:
+  dynamic-dashboards-generator:
+    volumes:
+      - type: bind
+        source: ./src/app
+        target: /opt/dynamic-dashboards-generator/app

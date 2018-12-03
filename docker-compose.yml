@@ -1,0 +1,23 @@
+version: '3.6'
+services:
+  dynamic-dashboards-generator:
+    build:
+      context: ./src/
+      args:
+        SERVICE_PORT: ${SERVICE_PORT}
+    image: "${DOCKER_REGISTRY}ngpaas/dynamic-dashboards-generator"
+    environment:
+      - FLASK_APP=${FLASK_APP}
+      - FLASK_ENV=${FLASK_ENV}
+      - SERVICE_PORT=${SERVICE_PORT}
+      - MONGO_URI=${MONGO_URI}
+    ports:
+      - "${SERVICE_PORT}:${SERVICE_PORT}"
+  dynamic-dashboards-generator-mongodb:
+    image: mongo:3.7
+    volumes:
+      - dynamic-dashboards-generator-mongodb-configdb:/data/configdb
+      - dynamic-dashboards-generator-mongodb-db:/data/db
+volumes:
+  dynamic-dashboards-generator-mongodb-configdb:
+  dynamic-dashboards-generator-mongodb-db:
