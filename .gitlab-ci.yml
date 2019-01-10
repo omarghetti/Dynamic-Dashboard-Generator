@@ -1,0 +1,22 @@
+image: docker:stable
+services:
+  - docker:dind
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+  CONTAINER_IMAGE: $CI_REGISTRY_IMAGE
+
+before_script:
+  - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+    - set -a
+    - source ./.env.example
+    - set +a
+    - docker pull $CONTAINER_IMAGE:latest || true
+    - docker build --build-arg SERVICE_PORT=$SERVICE_PORT --cache-from $CONTAINER_IMAGE:latest --tag $CONTAINER_IMAGE:$CI_COMMIT_SHA --tag $CONTAINER_IMAGE:latest ./src
+    - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
+    - docker push $CONTAINER_IMAGE:latest

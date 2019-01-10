@@ -5,7 +5,7 @@ services:
       context: ./src/
       args:
         SERVICE_PORT: ${SERVICE_PORT}
-    image: "${DOCKER_REGISTRY}ngpaas/dynamic-dashboards-generator"
+    image: "${DOCKER_REGISTRY}ngpaas/dynamic-dashboards-generator:${IMAGE_TAG}"
     environment:
       - FLASK_APP=${FLASK_APP}
       - FLASK_ENV=${FLASK_ENV}
