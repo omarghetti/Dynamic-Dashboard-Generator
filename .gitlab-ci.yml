@@ -5,18 +5,30 @@ services:
 variables:
   DOCKER_HOST: tcp://docker:2375
   DOCKER_DRIVER: overlay2
-  CONTAINER_IMAGE: $CI_REGISTRY_IMAGE
+  DYNAMIC_DASHBOARDS_GENERATOR_IMAGE: $CI_REGISTRY_IMAGE
+  DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE: $CI_REGISTRY_IMAGE/redis-worker
 
 before_script:
   - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
 
-build:
+build_dynamic_dashboards_generator:
   stage: build
   script:
     - set -a
     - source ./.env.example
     - set +a
-    - docker pull $CONTAINER_IMAGE:latest || true
-    - docker build --build-arg SERVICE_PORT=$SERVICE_PORT --cache-from $CONTAINER_IMAGE:latest --tag $CONTAINER_IMAGE:$CI_COMMIT_SHA --tag $CONTAINER_IMAGE:latest ./src
-    - docker push $CONTAINER_IMAGE:$CI_COMMIT_SHA
-    - docker push $CONTAINER_IMAGE:latest
+    - docker pull $DYNAMIC_DASHBOARDS_GENERATOR_IMAGE:latest || true
+    - docker build --cache-from $DYNAMIC_DASHBOARDS_GENERATOR_IMAGE:latest --tag $DYNAMIC_DASHBOARDS_GENERATOR_IMAGE:$CI_COMMIT_SHA --tag $DYNAMIC_DASHBOARDS_GENERATOR_IMAGE:latest --file ./src/kafka_consumer.dockerfile ./src
+    - docker push $DYNAMIC_DASHBOARDS_GENERATOR_IMAGE:$CI_COMMIT_SHA
+    - docker push $DYNAMIC_DASHBOARDS_GENERATOR_IMAGE:latest
+
+build_dynamic_dashboards_generator_redis_worker:
+  stage: build
+  script:
+    - set -a
+    - source ./.env.example
+    - set +a
+    - docker pull $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest || true
+    - docker build --cache-from $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest --tag $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:$CI_COMMIT_SHA --tag $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest --file ./maas_server/redis_worker.dockerfile ./src
+    - docker push $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:$CI_COMMIT_SHA
+    - docker push $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest
