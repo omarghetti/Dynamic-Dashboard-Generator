@@ -29,6 +29,6 @@ build_dynamic_dashboards_generator_redis_worker:
     - source ./.env.example
     - set +a
     - docker pull $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest || true
-    - docker build --cache-from $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest --tag $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:$CI_COMMIT_SHA --tag $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest --file ./maas_server/redis_worker.dockerfile ./src
+    - docker build --cache-from $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest --tag $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:$CI_COMMIT_SHA --tag $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest --file ./src/redis_worker.dockerfile ./src
     - docker push $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:$CI_COMMIT_SHA
     - docker push $DYNAMIC_DASHBOARDS_GENERATOR_REDIS_WORKER_IMAGE:latest
