@@ -3,21 +3,12 @@ services:
   dynamic-dashboards-generator:
     build:
       context: ./src/
-      args:
-        SERVICE_PORT: ${SERVICE_PORT}
+      dockerfile: kafka_consumer.dockerfile
     image: "${DOCKER_REGISTRY}ngpaas/dynamic-dashboards-generator:${IMAGE_TAG}"
-    environment:
-      - FLASK_APP=${FLASK_APP}
-      - FLASK_ENV=${FLASK_ENV}
-      - SERVICE_PORT=${SERVICE_PORT}
-      - MONGO_URI=${MONGO_URI}
-    ports:
-      - "${SERVICE_PORT}:${SERVICE_PORT}"
-  dynamic-dashboards-generator-mongodb:
-    image: mongo:3.7
-    volumes:
-      - dynamic-dashboards-generator-mongodb-configdb:/data/configdb
-      - dynamic-dashboards-generator-mongodb-db:/data/db
-volumes:
-  dynamic-dashboards-generator-mongodb-configdb:
-  dynamic-dashboards-generator-mongodb-db:
+    env_file: .env
+  dynamic-dashboards-generator-redis-worker:
+    build:
+      context: ./src/
+      dockerfile: redis_worker.dockerfile
+    image: "${DOCKER_REGISTRY}ngpaas/dynamic-dashboards-generator-redis-worker:${IMAGE_TAG}"
+    env_file: .env

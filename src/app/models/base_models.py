@@ -8,7 +8,7 @@ class Metric(EmbeddedMongoModel):
   cloud_property = fields.CharField(required=True)
 
   class Meta:
-    connection_alias = os.environ.get('FLASK_APP')
+    connection_alias = os.environ.get('APP_NAME')
 
   def __repr__(self):
     return '{}(cloud_property={!r})'.format(self.__class__.__name__, self.cloud_property)
@@ -22,7 +22,7 @@ class Visualization(MongoModel):
   updated_at = fields.DateTimeField(required=False)
 
   class Meta:
-    connection_alias = os.environ.get('FLASK_APP')
+    connection_alias = os.environ.get('APP_NAME')
 
   def __repr__(self):
     return '{}(title={!r}, type={!r}, created_at={!r}, updated_at={!r})'.format(self.__class__.__name__, self.title, self.type, self.created_at, self.updated_at)
@@ -36,7 +36,7 @@ class Dashboard(MongoModel):
   updated_at = fields.DateTimeField(required=False)
 
   class Meta:
-    connection_alias = os.environ.get('FLASK_APP')
+    connection_alias = os.environ.get('APP_NAME')
 
   def __repr__(self):
     return '{}(title={!r}, visualizations={!r}, created_at={!r}, updated_at={!r})'.format(self.__class__.__name__, self.title, self.visualizations, self.created_at, self.updated_at)
