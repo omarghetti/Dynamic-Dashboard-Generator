@@ -1,8 +1,8 @@
 version: '3.6'
 services:
-  dynamic-dashboards-generator-redis:
+  redis:
     image: redis:alpine
-  dynamic-dashboards-generator-mongodb:
+  mongodb:
     image: mongo:3.7
     volumes:
       - dynamic-dashboards-generator-mongodb-configdb:/data/configdb
@@ -17,6 +17,28 @@ services:
       KAFKA_PORT: 9092
       KAFKA_CREATE_TOPICS: "${KAFKA_TOPIC}:1:1"
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+    depends_on:
+      - zookeeper
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch-oss:${ELASTICSEARCH_IMAGE_TAG}
+    environment:
+      - bootstrap.memory_lock=true
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+  kibana:
+    image: docker.elastic.co/kibana/kibana-oss:${KIBANA_IMAGE_TAG}
+    ports:
+      - '5601:5601'
+    depends_on:
+      - elasticsearch
+  grafana:
+    image: grafana/grafana:${GRAFANA_IMAGE_TAG}
+    ports:
+      - '3000:3000'
 volumes:
   dynamic-dashboards-generator-mongodb-configdb:
   dynamic-dashboards-generator-mongodb-db:
