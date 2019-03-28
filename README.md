@@ -22,7 +22,7 @@ The generated dashboards need to be persisted in dedicated storage and eventuall
 ## How to execute
 In order to create a reproducible environment, Dockerfiles are available.
 
-Also, a `docker-compose.*.yml` files are provided to speed-up development and lay the foundations for a more complex setup.
+Also, a `docker-compose*.yml` files are provided to speed-up development and lay the foundations for a more complex setup.
 
 > N.B.: all the commands are intended to be executed from the project root directory (`dynamic-dashboards-generator/`)
 
@@ -33,16 +33,37 @@ Requirements to run with Docker Compose:
 * Docker Compose 1.20.0+
 
 Run the following command to build the services:
-```
+
+```bash
 $ docker-compose build
 ```
 
-Then, run the following command to run the services:
-```
+Then, run the following command to execute *all* the services:
+
+```bash
 $ docker-compose up
 ```
 
-The `docker-compose.yml` contains the two main services. The `docker-compose.override.yml` contains the dependencies such as storage engines and message brokers.
+The `docker-compose.yml` contains the two main services. The `docker-compose.override.yml` contains the dependencies such as storage engines, message brokers and data visualization tools. It is strongly advised to specify the services to be run in order to reduce the workload.
+
+For instance, the `docker-compose.override.yml` holds both Elasticsearch + Kibana and Grafana. However, most of the development scenarios requires to run only one of them.
+
+Therefore, an example could be:
+
+```bash
+$ docker-compose up dynamic-dashboards-generator dynamic-dashboards-generator-redis-worker mongodb redis kafka kibana
+```
+
+## How to publish messages using the Kafka shell
+The Dynamic Dashboards Generator works using an event-driven approach. Thus, it is subscribed to one or more Kafka topics and reacts to the messages received.
+
+To publish a message using the Kafka shell run the following commands:
+
+```bash
+$ docker-compose exec kafka bash
+$ $KAFKA_HOME/bin/kafka-console-producer.sh --topic=your_topic --broker-list='localhost:9092' # substitute your_topic with the topic in the .env file
+$ your_message # publish whatever you want, i.e. a JSON payload
+```
 
 ## License
 This project is licensed under the AGPLv3. See the [LICENSE.md](LICENSE.md) file for details.
