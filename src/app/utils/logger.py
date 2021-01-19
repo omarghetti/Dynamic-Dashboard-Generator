@@ -10,7 +10,7 @@ def configure_logger(logger):
     if settings.DEBUG:
       logger.setLevel(logging.DEBUG)
     else:
-      logger.setLevel(loggin.INFO)
+      logger.setLevel(logging.INFO)
     handler = logging.StreamHandler(sys.stderr)
     handler.setFormatter(FORMATTER)
     logger.addHandler(handler)

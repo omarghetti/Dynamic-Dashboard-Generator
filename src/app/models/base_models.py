@@ -1,42 +1,60 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
-from pymodm import MongoModel, EmbeddedMongoModel, fields
 import os
+from pymodm import MongoModel, ReferenceField, fields
 
-class Metric(EmbeddedMongoModel):
-  """The class which represents a metric."""
-  cloud_property = fields.CharField(required=True)
+
+class KPI(MongoModel):
+  name = fields.CharField(required=True)
 
   class Meta:
-    connection_alias = os.environ.get('APP_NAME')
+    connection_alias = "dynamic_dashboard_generator"
 
-  def __repr__(self):
-    return '{}(cloud_property={!r})'.format(self.__class__.__name__, self.cloud_property)
+
+class SimpleKPI(KPI):
+  kpi_id = fields.DictField(required=True)
+  target = fields.DictField(required=True)
+
+
+class DerivedKPI(KPI):
+  source_kpis = fields.ListField(field=ReferenceField(KPI), required=True)
+  transformation_function = fields.CharField(required=True)
+  tf_arguments = fields.DictField(required=False)
+
 
 class Visualization(MongoModel):
-  """The class which represents a visualization."""
-  title = fields.CharField(required=True)
-  type = fields.CharField(choices=('gauge', 'chart'), required=True)
-  metric = fields.EmbeddedDocumentField(Metric, required=True)
-  created_at = fields.DateTimeField(required=True)
-  updated_at = fields.DateTimeField(required=False)
+  name = fields.CharField(required=True)
 
   class Meta:
-    connection_alias = os.environ.get('APP_NAME')
+    connection_alias = "dynamic_dashboard_generator"
 
-  def __repr__(self):
-    return '{}(title={!r}, type={!r}, created_at={!r}, updated_at={!r})'.format(self.__class__.__name__, self.title, self.type, self.created_at, self.updated_at)
 
-class Dashboard(MongoModel):
-  """The class which represents a dashboard."""
-  title = fields.CharField(required=True)
-  visualizations = fields.ListField(ReferenceField(Visualization), blank=False, required=True)
-  monitoring_request_id = fields.ObjectIdField(required=True)
-  created_at = fields.DateTimeField(required=True)
-  updated_at = fields.DateTimeField(required=False)
+class SimpleVisualization(Visualization):
+  kpis = fields.ListField(field=ReferenceField(KPI), required=True)
+
+
+class ComposedVisualization(Visualization):
+  summary_visualization = fields.ReferenceField(SimpleVisualization, required=False)
+  composing_visualizations = fields.ListField(field=ReferenceField(Visualization), required=True)
+
+
+class DashboardItem(MongoModel):
+  visualizations = fields.ListField(required=True)
+  item_number = fields.FloatField()
+  scrolling = fields.FloatField(required=False)
 
   class Meta:
-    connection_alias = os.environ.get('APP_NAME')
+    connection_alias = "dynamic_dashboard_generator"
 
-  def __repr__(self):
-    return '{}(title={!r}, visualizations={!r}, created_at={!r}, updated_at={!r})'.format(self.__class__.__name__, self.title, self.visualizations, self.created_at, self.updated_at)
+
+class DashboardPage(MongoModel):
+  items = fields.ListField()
+
+  class Meta:
+    connection_alias = "dynamic_dashboard_generator"
+
+
+class DashboardGlobal(MongoModel):
+  dashboardpages = fields.ListField(required=True)
+
+  class Meta:
+    connection_alias = "dynamic_dashboard_generator"

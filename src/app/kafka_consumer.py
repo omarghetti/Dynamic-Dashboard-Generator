@@ -33,7 +33,7 @@ def main(*args):
       if message is None:
         continue
       elif not message.error():
-        dashboard_service.handle_monitoring_request(message)
+        dashboard_service.handle_metamodel_request(message)
       elif message.error().code() == KafkaError._PARTITION_EOF:
         logger.debug('End of partition reached %s/%s', message.topic(), message.partition())
       else:
