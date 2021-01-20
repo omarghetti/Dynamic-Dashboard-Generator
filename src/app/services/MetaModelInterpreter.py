@@ -1,6 +1,7 @@
 from src.app.models.base_models import *
 from src.app.models.grafana_dashboard import grafana_dashboard
 from src.app.models.DashboardStyle import DashboardStyle
+from src.app.services.styleHandler import check_dashboard_visualization_style
 import os
 from src.app.utils.logger import get_logger
 import json
@@ -22,10 +23,13 @@ def Meta_Model_Interpreter(message):
       model_uid = meta_model_value
     elif(meta_model_key == "dashboardpages"):
       dashboard_style = check_dashboard_visualization_style(meta_model_value)
-    concrete_dashboard = grafana_dashboard(model_title, model_uid, model_id)
-    style_mapping = DashboardStyle(model_uid,dashboard_style)
-    logger.debug("Meta Model Interpreted ")
-    logger.debug(concrete_dashboard)
+  concrete_dashboard = grafana_dashboard(model_title, model_uid, model_id)
+  style_mapping = DashboardStyle(model_uid, dashboard_style)
+  logger.debug("Meta Model Interpreted ")
+  logger.debug(concrete_dashboard)
+  logger.debug("Style Recognized!")
+  logger.debug(style_mapping)
+  return concrete_dashboard, style_mapping
 
 
 
