@@ -1,7 +1,7 @@
 import os
 
 
-class DashboardStyle:
+class Meta_Dashboard:
   def __init__(self, dashboard_id, dashboard_style):
     self.dashboard_id = dashboard_id
     self.dashboard_style = dashboard_style
