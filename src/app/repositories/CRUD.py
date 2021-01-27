@@ -34,7 +34,7 @@ def find_page(name):
 
 
 def find_viz(name):
-    return Visualization.objects.get({'_id': name})
+  return Visualization.objects.get({'_id': name})
 
 
 def find_KPI(name):
