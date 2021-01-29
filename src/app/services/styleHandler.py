@@ -65,20 +65,22 @@ def create_panels(items_list, width, last_height):
   y = last_height
   for item in support_list:
     viz_to_process = find_viz(item['viz'])
-    h = (8 / item['high_in_item']) * 100  # we keep 8 as standard for height value to maintain readability of the panels
-    w = (((24 / item['width_in_item']) * 100) / width) * 100  # grafana limit for width in dashboard is 24 columns
-    if w != 24:
+    h = (8 / 100.0) * item['high_in_item']    # we keep 8 as standard for height value to maintain readability of the panels
+    w = (((24 / 100.0) * item['width_in_item']) / 100.0) * width  # grafana limit for width in dashboard is 24 columns
+    if w != 24 and h == 8:
       x += w
-      y = 0
+      y += 0
     else:
-      x = 0
+      x += 0
       y += h
+      if y == 8:
+        y = last_height
     grid = Grid(x, y, w, h)
     if isinstance(viz_to_process, SimpleVisualization):
       new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid)
     else:
       summary_viz = find_viz(viz_to_process.summary_visualization)
       new_panel = Panel(summary_viz.name, summary_viz.kpis, grid)
-    last_height = y
+    last_height += y
     panels.append(new_panel)
   return panels, last_height

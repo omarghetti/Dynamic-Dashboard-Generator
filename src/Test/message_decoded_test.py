@@ -8,7 +8,7 @@ from src.app.models.grid_model import Grid
 
 def test_decoded_message():
   mongodb_connect(settings.MONGO_URI, connection_alias=settings.APP_NAME)
-  message = "{\"_id\":\"6001a550ec3a465aaed372c8\",\"dashboardpages\":[\"6001a550ec3a465aaed372c7\"]}"
+  message = "{\"_id\":\"60118b66ad58f40f597dd6a0\",\"dashboardpages\":[\"60118b66ad58f40f597dd69f\"]}"
   dashboards = Meta_Model_Interpreter(message)
   assert dashboards[0].dashboard_style == "RepeatedStyle"
   assert len(dashboards) == 1
