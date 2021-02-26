@@ -4,7 +4,7 @@ from src.app.utils.redis import connection
 from src.app.utils.logger import get_logger
 import src.app.services.MetaModelInterpreter as MetaModelInterpreter
 from simple_settings import settings
-from src.app.services.Ontology_Processor import query_ontology
+from src.app.services.grafana_ontology_processor import query_ontology
 
 
 #Microservice Entrypoint

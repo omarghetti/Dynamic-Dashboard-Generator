@@ -1,9 +1,11 @@
-from src.app.models.base_models import *
+import src.app.models.base_models as bm
 from src.app.repositories.CRUD import *
 from src.app.utils.logger import get_logger
 from src.app.models.Metadashboard import Meta_Dashboard
 from src.app.models.grid_model import Grid
 from src.app.models.panel import Panel
+from src.app.services.grafana_ontology_processor import query_ontology_for_grafana
+from src.app.services.kibana_ontology_processor import query_ontology_for_kibana
 from bson import ObjectId
 
 logger = get_logger(__name__)
@@ -35,7 +37,7 @@ def check_dashboard_visualization_style(pages_list):
 ##cycling the meta-model to create the agnostic model to support final dashboard creation.
 # this agnostic model will be processed inside the ontology to create the
 # right panels for the final dashboard
-def create_dashboards(pages_list, dashboardstyle, model_uid):
+def create_dashboards_for_grafana(pages_list, dashboardstyle, model_uid):
   dashboardlist = []
   last_height = 0
   for page in pages_list:
@@ -43,7 +45,23 @@ def create_dashboards(pages_list, dashboardstyle, model_uid):
     meta_page = find_page(ObjectId(page))
     for item in meta_page.items:
       meta_item = find_item(item['item'])
-      panels, last_height = create_panels(meta_item.visualizations, item['width'], last_height)
+      panels, last_height = create_panels_for_grafana(meta_item.visualizations, item['width'], last_height)
+      panel_list.append(panels)
+    concrete_dashboard = Meta_Dashboard(model_uid, dashboardstyle, panel_list)
+    dashboardlist.append(concrete_dashboard)
+    last_height = 0
+  return dashboardlist
+
+
+def create_dashboards_for_kibana(pages_list, dashboardstyle, model_uid):
+  dashboardlist = []
+  last_height = 0
+  for page in pages_list:
+    panel_list = []
+    meta_page = find_page(ObjectId(page))
+    for item in meta_page.items:
+      meta_item = find_item(item['item'])
+      panels, last_height = create_panels_for_kibana(meta_item.visualizations, item['width'], last_height)
       panel_list.append(panels)
     concrete_dashboard = Meta_Dashboard(model_uid, dashboardstyle, panel_list)
     dashboardlist.append(concrete_dashboard)
@@ -52,7 +70,7 @@ def create_dashboards(pages_list, dashboardstyle, model_uid):
 
 
 ##Panel Creation, class Panel and Grid populated to create the support structure for the ontology
-def create_panels(items_list, width, last_height):
+def create_panels_for_grafana(items_list, width, last_height):
   support_list = []
   if isinstance(items_list, dict):
     support_list.append(items_list)
@@ -65,7 +83,8 @@ def create_panels(items_list, width, last_height):
   y = last_height
   for item in support_list:
     viz_to_process = find_viz(item['viz'])
-    h = (8 / 100.0) * item['high_in_item']    # we keep 8 as standard for height value to maintain readability of the panels
+    h = (8 / 100.0) * item[
+      'high_in_item']  # we keep 8 as standard for height value to maintain readability of the panels
     w = (((24 / 100.0) * item['width_in_item']) / 100.0) * width  # grafana limit for width in dashboard is 24 columns
     if w != 24 and h == 8:
       x += w
@@ -76,11 +95,50 @@ def create_panels(items_list, width, last_height):
       if y == 8:
         y = last_height
     grid = Grid(x, y, w, h)
-    if isinstance(viz_to_process, SimpleVisualization):
-      new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid)
+    if isinstance(viz_to_process, bm.SimpleVisualization):
+      panel_name = query_ontology_for_grafana(viz_to_process)
+      new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid,panel_name)
+    elif isinstance(viz_to_process, bm.ComposedVisualization):
+      panel_name = query_ontology_for_grafana(viz_to_process.summary_visualization)
+      new_panel = Panel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis, grid
+                        , panel_name)
+    last_height += y
+    panels.append(new_panel)
+  return panels, last_height
+
+
+def create_panels_for_kibana(items_list, width, last_height):
+  support_list = []
+  if isinstance(items_list, dict):
+    support_list.append(items_list)
+  else:
+    support_list = items_list.copy()
+  panels = []
+  x = 0
+  w = 0
+  h = 0
+  y = last_height
+  for item in support_list:
+    viz_to_process = find_viz(item['viz'])
+    h = (15 / 100.0) * item[
+      'high_in_item']  # we keep 8 as standard for height value to maintain readability of the panels
+    w = (((48 / 100.0) * item['width_in_item']) / 100.0) * width  # grafana limit for width in dashboard is 24 columns
+    if w != 48 and h == 15:
+      x += w
+      y += 0
     else:
-      summary_viz = find_viz(viz_to_process.summary_visualization)
-      new_panel = Panel(summary_viz.name, summary_viz.kpis, grid)
+      x += 0
+      y += h
+      if y == 15:
+        y = last_height
+    grid = Grid(x, y, w, h)
+    if isinstance(viz_to_process, bm.SimpleVisualization):
+      panel_name = query_ontology_for_kibana(viz_to_process)
+      new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
+    elif isinstance(viz_to_process, bm.ComposedVisualization):
+      panel_name = query_ontology_for_kibana(viz_to_process)
+      new_panel = Panel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
+                        grid,panel_name)
     last_height += y
     panels.append(new_panel)
   return panels, last_height

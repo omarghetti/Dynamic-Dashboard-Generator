@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#"
+     xml:base="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Rollup -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Rollup"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#aggrType -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#aggrType">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasAggregationFunction -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasAggregationFunction">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgument -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgument">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentValue -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentValue">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#ArgumentValue"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasDimension">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasFormula -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasFormula">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#inDimension -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#inDimension">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#inLevel -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#inLevel">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Member"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isFormulaFor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isFormulaFor">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#acronym -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#acronym">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#NCName"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentPosition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentPosition">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasFunction -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasFunction">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isAdditive -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isAdditive">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isDerivative -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isDerivative">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#kpiDescription -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#kpiDescription">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#unitOfMeasure -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#unitOfMeasure">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#ArgumentValue -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#ArgumentValue"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Constant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Constant"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level"/>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Member -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Member"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#algebraic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#algebraic">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#avg -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#avg">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#count -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#count">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#distributive -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#distributive">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#holistic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#holistic">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#max -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#max">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#median -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#median">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#min -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#min">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#mode -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#mode">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#sum -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#sum">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+

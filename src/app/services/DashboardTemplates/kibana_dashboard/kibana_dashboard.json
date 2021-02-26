@@ -1,0 +1,15 @@
+{
+  "attributes":
+  {
+    "title": "{{item.title}}",
+    "hits": 0,
+    "description": "",
+    "panelsJSON": "[]",
+    "optionsJSON": "{\"darkTheme\":false,\"useMargins\":true,\"hidePanelTitles\":false}",
+    "version": 1,
+    "timeRestore": false,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
+    }
+  }
+}
