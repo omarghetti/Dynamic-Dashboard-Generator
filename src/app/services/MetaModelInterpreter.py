@@ -1,10 +1,9 @@
 from bson import ObjectId
-from src.app.models.base_models import *
-from src.app.models.Metadashboard import Meta_Dashboard
-from src.app.services.grafana_ontology_processor import query_ontology_for_grafana
-from src.app.services.kibana_ontology_processor import query_ontology_for_kibana
 from src.app.services.styleHandler import check_dashboard_visualization_style, \
-  create_dashboards_for_grafana,create_dashboards_for_kibana
+  create_dashboards_for_grafana, create_dashboards_for_kibana
+from src.app.services.http_dispatcher import post_grafana_dashboard, post_kibana_dashboard
+from src.app.services.grafana_renderer import *
+from src.app.services.kibana_renderer import *
 import os
 from src.app.utils.logger import get_logger
 import json
@@ -35,6 +34,14 @@ def meta_model_interpreter(message):
   logger.debug(dashboard_style)
   logger.debug("Panels Created")
   logger.debug("Final Dashboards Ready")
+  if viz_tool == 'grafana':
+    final_dashboards = load_grafana_templates(dashboards, dashboard_style)
+    for i in final_dashboards:
+      post_grafana_dashboard(i)
+  else:
+    final_dashboards = load_kibana_templates(dashboards, dashboard_style)
+    for i in final_dashboards:
+      post_kibana_dashboard(i)
   return dashboards
 
 

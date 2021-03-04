@@ -1,4 +1,4 @@
-    {
+{
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -13,10 +13,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 0
+        "h": "{{ panel.grid_position.h }}",
+        "w": "{{ panel.grid_position.w }}",
+        "x": "{{ panel.grid_position.x }}",
+        "y": "{{ panel.grid_position.y }}"
       },
       "hiddenSeries": false,
       "id": 2,
@@ -84,4 +84,4 @@
         "align": false,
         "alignLevel": null
       }
-    }
+}

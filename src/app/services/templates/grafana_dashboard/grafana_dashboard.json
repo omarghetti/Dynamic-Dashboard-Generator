@@ -1,0 +1,42 @@
+{
+  "dashboard":
+  {
+    "id": null,
+    "annotations": {
+      "list": []
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "links": [],
+    "panels": [
+      {% for panel in panels %}
+        {% if (panel.panel_type == "Gauge") %}
+          {% with panel=panel %}
+            {% include 'grafana_panels/gauge_panel.json'  %}
+          {% endwith %}
+        {% elif (panel.panel_type == "Graph") %}
+          {% with panels=panels %}
+            {% include 'grafana_panels/graph_panel.json'  %}
+          {% endwith %}
+        {% endif %}
+        {% if not loop.last %},{% endif %}
+      {% endfor %}
+    ],
+    "schemaVersion": 26,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "test-dashboard",
+    "uid": "{{ dashboard.uid }}",
+    "version": 1
+  }
+}

@@ -7,10 +7,10 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Object Properties
@@ -18,13 +18,13 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Rollup -->
 
     <owl:ObjectProperty rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Rollup"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#aggrType -->
@@ -33,7 +33,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasAggregationFunction -->
@@ -42,7 +42,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgument -->
@@ -51,7 +51,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentValue -->
@@ -60,7 +60,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#ArgumentValue"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasDimension -->
@@ -69,7 +69,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasFormula -->
@@ -78,7 +78,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#inDimension -->
@@ -87,7 +87,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#inLevel -->
@@ -96,7 +96,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Member"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level"/>
     </owl:ObjectProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isFormulaFor -->
@@ -105,10 +105,10 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
         <rdfs:range rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
     </owl:ObjectProperty>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Data properties
@@ -116,7 +116,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#acronym -->
@@ -125,7 +125,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentName -->
@@ -134,7 +134,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#NCName"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasArgumentPosition -->
@@ -143,7 +143,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#hasFunction -->
@@ -152,7 +152,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isAdditive -->
@@ -161,7 +161,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#isDerivative -->
@@ -170,7 +170,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#kpiDescription -->
@@ -179,7 +179,7 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#unitOfMeasure -->
@@ -188,10 +188,10 @@
         <rdfs:domain rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Classes
@@ -199,70 +199,70 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#ArgumentValue -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#ArgumentValue"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Constant -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Constant"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Dimension"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Formula"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#FormulaArgument"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Level"/>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Member -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Member"/>
-    
 
 
-    <!-- 
+
+    <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Individuals
@@ -270,7 +270,130 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#CPU_Load -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#CPU_Load">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>CPU Load</acronym>
+        <unitOfMeasure>Percent</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#CPU_frequency -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#CPU_frequency">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>CPU frequency</acronym>
+        <unitOfMeasure>Mhz</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Concurrent_Users -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Concurrent_Users">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>Concurrent_Users</acronym>
+        <unitOfMeasure>#</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Cpu_Summary -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Cpu_Summary">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#avg"/>
+        <acronym>CPU summary</acronym>
+        <isDerivative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isDerivative>
+        <unitOfMeasure>Percent</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Data_Recieved -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Data_Recieved">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>Data Recieved</acronym>
+        <unitOfMeasure>KB</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Data_Sent -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Data_Sent">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>Data Sent</acronym>
+        <unitOfMeasure>KB</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Disk_Usage -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Disk_Usage">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>Disk Usage</acronym>
+        <unitOfMeasure>Percent</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Memory_Frequency -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Memory_Frequency">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>Memory frequency</acronym>
+        <unitOfMeasure>Mhz</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Memory_Load -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Memory_Load">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>Memory load</acronym>
+        <unitOfMeasure>Percent</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Network_Stats -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Network_Stats">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#avg"/>
+        <acronym>Network Stats</acronym>
+        <isDerivative rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</isDerivative>
+        <unitOfMeasure>Percent</unitOfMeasure>
+    </owl:NamedIndividual>
+
+
+
+    <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Operations_Per_Minute -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Operations_Per_Minute">
+        <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#Indicator"/>
+        <hasAggregationFunction rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none"/>
+        <acronym>Operations_Per_Minute</acronym>
+        <unitOfMeasure>#</unitOfMeasure>
+    </owl:NamedIndividual>
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#algebraic -->
@@ -278,7 +401,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#algebraic">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#avg -->
@@ -286,7 +409,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#avg">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#count -->
@@ -294,7 +417,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#count">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#distributive -->
@@ -302,7 +425,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#distributive">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#holistic -->
@@ -310,7 +433,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#holistic">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#max -->
@@ -318,7 +441,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#max">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#median -->
@@ -326,7 +449,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#median">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#min -->
@@ -334,7 +457,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#min">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#mode -->
@@ -342,7 +465,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#mode">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationFunction"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none -->
@@ -350,7 +473,7 @@
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#none">
         <rdf:type rdf:resource="http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#AggregationType"/>
     </owl:NamedIndividual>
-    
+
 
 
     <!-- http://www.semanticweb.org/omarghetti/ontologies/2021/0/untitled-ontology-3#sum -->

@@ -1,4 +1,5 @@
 import pytest
+import os
 from src.app.utils.db import mongodb_connect
 from simple_settings import settings
 from src.app.services.MetaModelInterpreter import meta_model_interpreter
@@ -9,6 +10,7 @@ from src.app.utils.logger import get_logger
 
 
 def test_decoded_message():
+  os.environ["SELECTED_TOOL"] = "grafana"
   mongodb_connect(settings.MONGO_URI, connection_alias=settings.APP_NAME)
   message = "{\"_id\":\"60118b66ad58f40f597dd6a0\",\"dashboardpages\":[\"60118b66ad58f40f597dd69f\"]}"
   dashboards = meta_model_interpreter(message)

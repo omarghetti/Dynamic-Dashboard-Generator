@@ -83,9 +83,10 @@ def create_panels_for_grafana(items_list, width, last_height):
   y = last_height
   for item in support_list:
     viz_to_process = find_viz(item['viz'])
-    h = (8 / 100.0) * item[
-      'high_in_item']  # we keep 8 as standard for height value to maintain readability of the panels
-    w = (((24 / 100.0) * item['width_in_item']) / 100.0) * width  # grafana limit for width in dashboard is 24 columns
+    h = round((8 / 100.0) * item[
+      'high_in_item'])  # we keep 8 as standard for height value to maintain readability of the panels
+    w = round(
+      (((24 / 100.0) * item['width_in_item']) / 100.0) * width)  # grafana limit for width in dashboard is 24 columns
     if w != 24 and h == 8:
       x += w
       y += 0
@@ -97,7 +98,7 @@ def create_panels_for_grafana(items_list, width, last_height):
     grid = Grid(x, y, w, h)
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process)
-      new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid,panel_name)
+      new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
     elif isinstance(viz_to_process, bm.ComposedVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process.summary_visualization)
       new_panel = Panel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis, grid
@@ -120,9 +121,9 @@ def create_panels_for_kibana(items_list, width, last_height):
   y = last_height
   for item in support_list:
     viz_to_process = find_viz(item['viz'])
-    h = (15 / 100.0) * item[
-      'high_in_item']  # we keep 8 as standard for height value to maintain readability of the panels
-    w = (((48 / 100.0) * item['width_in_item']) / 100.0) * width  # grafana limit for width in dashboard is 24 columns
+    h = round((15 / 100.0) * item[
+      'high_in_item'] ) # we keep 8 as standard for height value to maintain readability of the panels
+    w = round((((48 / 100.0) * item['width_in_item']) / 100.0) * width ) # kibana limit for width in dashboard is 24 columns
     if w != 48 and h == 15:
       x += w
       y += 0
@@ -138,7 +139,7 @@ def create_panels_for_kibana(items_list, width, last_height):
     elif isinstance(viz_to_process, bm.ComposedVisualization):
       panel_name = query_ontology_for_kibana(viz_to_process)
       new_panel = Panel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
-                        grid,panel_name)
+                        grid, panel_name)
     last_height += y
     panels.append(new_panel)
   return panels, last_height
