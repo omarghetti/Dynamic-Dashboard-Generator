@@ -1,46 +1,52 @@
-{
-    "datasource": null,
-    "type": "gauge",
-    "title": "{{ panel.title }}",
-    "gridPos":
     {
-        "h": {{ panel.grid_position.h }},
-        "w": {{ panel.grid_position.w }},
-        "x": {{ panel.grid_position.x }},
-        "y": {{ panel.grid_position.y }}
-    },
-    "id": "",
-    "targets": [
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": {{panel.grid_position.h}},
+        "w": {{panel.grid_position.w}},
+        "x": {{panel.grid_position.x}},
+        "y": {{panel.grid_position.y}}
+      },
+      "id": "",
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "7.3.4",
+      "targets": [
         {
           "queryType": "randomWalk",
           "refId": "A"
         }
-    ],
-    "timeFrom": null,
-    "timeShift": null,
-    "links": [],
-    "cacheTimeout": null,
-    "options":
-    {
-        "minValue": 0,
-        "maxValue": 100,
-        "showThresholdMarkers": true,
-        "showThresholdLabels": false,
-        "valueOptions": {
-        "prefix": "",
-        "suffix": "",
-        "decimals": null,
-        "stat": "",
-        "unit": "none"
-        },
-        "valueMappings": [],
-        "thresholds":
-        [
-        {
-            "index": 0,
-            "value": null,
-            "color": "#7EB26D"
-        }
-        ]
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "{{panel.title}}",
+      "type": "gauge"
     }
-}
