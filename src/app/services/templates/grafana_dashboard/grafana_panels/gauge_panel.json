@@ -1,13 +1,13 @@
 {
     "datasource": null,
     "type": "gauge",
-    "title": "{{ panel.title }}",
+    "title": "{{ panel[0].title }}",
     "gridPos":
     {
-        "h": "{{ panel.grid_position.h }}",
-        "w": "{{ panel.grid_position.w }}",
-        "x": "{{ panel.grid_position.x }}",
-        "y": "{{ panel.grid_position.y }}"
+        "h": "{{ panel[0].grid_position.h }}",
+        "w": "{{ panel[0].grid_position.w }}",
+        "x": "{{ panel[0].grid_position.x }}",
+        "y": "{{ panel[0].grid_position.y }}"
     },
     "id": null,
     "targets":

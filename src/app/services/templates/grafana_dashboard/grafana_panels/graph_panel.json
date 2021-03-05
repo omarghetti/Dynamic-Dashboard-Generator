@@ -13,10 +13,10 @@
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
-        "h": "{{ panel.grid_position.h }}",
-        "w": "{{ panel.grid_position.w }}",
-        "x": "{{ panel.grid_position.x }}",
-        "y": "{{ panel.grid_position.y }}"
+        "h": "{{ panel[0].grid_position.h }}",
+        "w": "{{ panel[0].grid_position.w }}",
+        "x": "{{ panel[0].grid_position.x }}",
+        "y": "{{ panel[0].grid_position.y }}"
       },
       "hiddenSeries": false,
       "id": null,
