@@ -10,11 +10,11 @@ def query_ontology_for_grafana(viz):
   else:
     kpi_to_process = find_KPI(viz.kpis[0])
   query_result = onto.search_one(acronym=kpi_to_process.name)
-  if query_result.unitOfMeasure == "#":
+  if query_result.unitOfMeasure[0] == '#':
     return "Graph"
-  elif query_result.unitOfMeasure == "Percent":
+  elif query_result.unitOfMeasure[0] == 'Percent':
     return "Gauge"
-  elif query_result.unitOfMeasure == "Mhz":
+  elif query_result.unitOfMeasure[0] == 'Mhz':
     return "Graph"
   else:
     return "Graph"

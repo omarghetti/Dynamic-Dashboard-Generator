@@ -1,5 +1,5 @@
 {
-    "datasource": "",
+    "datasource": null,
     "type": "gauge",
     "title": "{{ panel.title }}",
     "gridPos":
@@ -9,7 +9,7 @@
         "x": "{{ panel.grid_position.x }}",
         "y": "{{ panel.grid_position.y }}"
     },
-    "id": "",
+    "id": null,
     "targets":
     [],
     "timeFrom": null,

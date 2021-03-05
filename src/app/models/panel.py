@@ -2,7 +2,7 @@ import os
 
 
 class Panel:
-  def __init__(self, title, kpi_related, grid_position,panel_type):
+  def __init__(self, title, kpi_related, grid_position, panel_type):
     self.title = title
     self.kpi_related = kpi_related
     self.grid_position = grid_position

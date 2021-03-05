@@ -11,16 +11,18 @@
     "links": [],
     "panels": [
       {% for panel in panels %}
-        {% if (panel.panel_type == "Gauge") %}
+        {% if (panel.panel_type == 'Gauge') %}
           {% with panel=panel %}
             {% include 'grafana_panels/gauge_panel.json'  %}
           {% endwith %}
-        {% elif (panel.panel_type == "Graph") %}
-          {% with panels=panels %}
+        {% elif (panel.panel_type == 'Graph') %}
+          {% with panel=panel %}
             {% include 'grafana_panels/graph_panel.json'  %}
           {% endwith %}
         {% endif %}
-        {% if not loop.last %},{% endif %}
+        {% if not loop.last %}
+          ,
+        {% endif %}
       {% endfor %}
     ],
     "schemaVersion": 26,
@@ -36,7 +38,7 @@
     "timepicker": {},
     "timezone": "",
     "title": "test-dashboard",
-    "uid": "{{ dashboard.uid }}",
+    "uid": null,
     "version": 1
   }
 }

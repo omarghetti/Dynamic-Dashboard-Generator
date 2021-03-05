@@ -19,7 +19,7 @@
         "y": "{{ panel.grid_position.y }}"
       },
       "hiddenSeries": false,
-      "id": 2,
+      "id": null,
       "legend": {
         "avg": false,
         "current": false,
@@ -36,7 +36,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.0",
+      "pluginVersion": "7.3.4",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -48,7 +48,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Panel Title",
+      "title": "graph_panel",
       "tooltip": {
         "shared": true,
         "sort": 0,
