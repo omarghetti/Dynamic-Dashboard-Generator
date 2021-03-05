@@ -12,18 +12,20 @@
     "panels":
     [
       {% for panel in panels %}
-        {% if (panel[0].panel_type == 'Gauge') %}
-          {% with panel=panel %}
-            {% include 'grafana_panels/gauge_panel.json'  %}
-          {% endwith %}
-        {% elif (panel[0].panel_type == 'Graph') %}
-          {% with panel=panel %}
-            {% include 'grafana_panels/graph_panel.json'  %}
-          {% endwith %}
-        {% endif %}
+        {% for fpanel in panel %}
+          {% if (fpanel.panel_type == 'Gauge') %}
+            {% with panel=fpanel %}
+              {% include 'grafana_panels/gauge_panel.json'  %}
+            {% endwith %}
+          {% elif (fpanel.panel_type == 'Graph') %}
+            {% with panel=fpanel %}
+              {% include 'grafana_panels/graph_panel.json'  %}
+            {% endwith %}
+          {% endif %}
+        {% if not loop.last %},{% endif %}
+        {% endfor %}
         {% if not loop.last %},{% endif %}
       {% endfor %}
-
     ],
     "schemaVersion": 26,
     "style": "dark",
