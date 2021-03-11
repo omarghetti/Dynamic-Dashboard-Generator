@@ -1,6 +1,5 @@
 import requests
 from simple_settings import settings
-from src.app.utils.logger import get_logger
 
 grafana_auth = (settings.GRAFANA_USER, settings.GRAFANA_PASSWORD)
 

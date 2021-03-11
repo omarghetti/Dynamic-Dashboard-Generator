@@ -19,7 +19,7 @@
         "y": {{panel.grid_position.y}}
       },
       "hiddenSeries": false,
-      "id": "",
+      "id": {{ panel.id }},
       "legend": {
         "avg": false,
         "current": false,
