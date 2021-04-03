@@ -1,10 +1,11 @@
 {
   "attributes":
   {
-    "title": "{{item.title}}",
+    "title": "NGpaas_test",
     "hits": 0,
     "description": "",
-    "panelsJSON": "[]",
+    "panelsJSON":"[]"
+,
     "optionsJSON": "{\"darkTheme\":false,\"useMargins\":true,\"hidePanelTitles\":false}",
     "version": 1,
     "timeRestore": false,

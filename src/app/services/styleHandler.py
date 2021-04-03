@@ -111,38 +111,39 @@ def create_panels_for_grafana(items_list, width, last_grid_position):
   return panels, next_panel_reference
 
 
-def create_panels_for_kibana(items_list, width, last_height):
+def create_panels_for_kibana(items_list, width, last_grid_position):
   support_list = []
   if isinstance(items_list, dict):
     support_list.append(items_list)
   else:
     support_list = items_list.copy()
   panels = []
-  x = 0
-  w = 0
-  h = 0
-  y = last_height
+  if last_grid_position.x == 24:
+    x = 0
+    y = last_grid_position.y + 8
+  else:
+    x = last_grid_position.x
+    y = last_grid_position.y
   for item in support_list:
     viz_to_process = find_viz(item['viz'])
     h = round((15 / 100.0) * item[
-      'high_in_item'] ) # we keep 8 as standard for height value to maintain readability of the panels
+      'high_in_item']) # we keep 8 as standard for height value to maintain readability of the panels
     w = round((((48 / 100.0) * item['width_in_item']) / 100.0) * width ) # kibana limit for width in dashboard is 24 columns
-    if w != 48 and h == 15:
-      x += w
-      y += 0
-    else:
-      x += 0
-      y += h
-      if y == 15:
-        y = last_height
     grid = Grid(x, y, w, h)
+    if h == 15:
+      x += w
+    else:
+      y += h
+      if y % 15 == 0:
+        y -= 15
+        x += w
+    next_panel_reference = Grid(x, y, w, h)
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_kibana(viz_to_process)
       new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
     elif isinstance(viz_to_process, bm.ComposedVisualization):
-      panel_name = query_ontology_for_kibana(viz_to_process)
+      panel_name = query_ontology_for_kibana(viz_to_process.summary_visualization)
       new_panel = Panel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
                         grid, panel_name)
-    last_height += y
     panels.append(new_panel)
-  return panels, last_height
+  return panels, next_panel_reference

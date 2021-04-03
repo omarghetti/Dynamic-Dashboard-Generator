@@ -9,8 +9,18 @@ from src.app.models.grid_model import Grid
 from src.app.utils.logger import get_logger
 
 
-def test_decoded_message():
+def test_decoded_message_grafana():
   os.environ["SELECTED_TOOL"] = "grafana"
+  mongodb_connect(settings.MONGO_URI, connection_alias=settings.APP_NAME)
+  message = "{\"_id\":\"60118b66ad58f40f597dd6a0\",\"dashboardpages\":[\"60118b66ad58f40f597dd69f\"]}"
+  dashboards = meta_model_interpreter(message)
+  assert dashboards[0].dashboard_style == "RepeatedStyle"
+  assert len(dashboards) == 1
+  assert len(dashboards[0].panels) == 12
+
+
+def test_decoded_message_kibana():
+  os.environ["SELECTED_TOOL"] = "kibana"
   mongodb_connect(settings.MONGO_URI, connection_alias=settings.APP_NAME)
   message = "{\"_id\":\"60118b66ad58f40f597dd6a0\",\"dashboardpages\":[\"60118b66ad58f40f597dd69f\"]}"
   dashboards = meta_model_interpreter(message)

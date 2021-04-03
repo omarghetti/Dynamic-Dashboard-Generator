@@ -18,7 +18,6 @@ def meta_model_interpreter(message):
   dashboard_style = 'null'
   model_uid = 'null'
   dashboards = []
-  final_dashboards = []
 
   for meta_model_key, meta_model_value in meta_model.items():
     if meta_model_key == "_id":

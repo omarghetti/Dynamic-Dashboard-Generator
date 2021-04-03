@@ -1,1 +1,23 @@
-{"attributes":{"title":"{{visualization.title}}","visState":"{\"title\":\"{{visualization.title}}\",\"type\":\"gauge\",\"params\":{\"addLegend\":true,\"addTooltip\":true,\"gauge\":{\"backStyle\":\"Full\",\"colorSchema\":\"Green to Red\",\"colorsRange\":[{\"from\":0,\"to\":50},{\"from\":50,\"to\":75},{\"from\":75,\"to\":100}],\"extendRange\":true,\"gaugeColorMode\":\"Labels\",\"gaugeStyle\":\"Full\",\"gaugeType\":\"Arc\",\"invertColors\":false,\"labels\":{\"color\":\"black\",\"show\":true},\"orientation\":\"vertical\",\"percentageMode\":false,\"scale\":{\"color\":\"#333\",\"labels\":false,\"show\":true},\"style\":{\"bgColor\":false,\"bgFill\":\"#eee\",\"bgMask\":false,\"bgWidth\":0.9,\"fontSize\":60,\"labelColor\":true,\"mask\":false,\"maskBars\":50,\"subText\":\"\",\"width\":0.9},\"type\":\"meter\",\"verticalSplit\":false},\"isDisplayWarning\":false,\"type\":\"gauge\"},\"aggs\":[{%for query in visualization.queries%}{%for metric in query.metrics%}{\"id\":\"{{metric.metric_id}}\",\"enabled\":true,\"type\":\"{{metric.operator}}\",\"schema\":\"metric\",\"params\":{\"field\":\"{{metric.field}}\"}}{%endfor%}{%endfor%}]}","uiStateJSON":"{\"vis\":{\"defaultColors\":{\"0-50\":\"rgb(0,104,55)\",\"50-75\":\"rgb(255,255,190)\",\"75-100\":\"rgb(165,0,38)\"}}}","description":"","version":1,"kibanaSavedObjectMeta":{"searchSourceJSON":"{\"index\":\"{{visualization.datasource_id}}\",\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"}}}
+{
+    "attributes": {
+        "description": "",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+        },
+        "title": "{{panel.title}}",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"{{panel.title}}\",\"type\":\"gauge\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"params\":{},\"schema\":\"metric\"}],\"params\":{\"type\":\"gauge\",\"addTooltip\":true,\"addLegend\":true,\"isDisplayWarning\":false,\"gauge\":{\"alignment\":\"automatic\",\"extendRange\":true,\"percentageMode\":false,\"gaugeType\":\"Arc\",\"gaugeStyle\":\"Full\",\"backStyle\":\"Full\",\"orientation\":\"vertical\",\"colorSchema\":\"Green to Red\",\"gaugeColorMode\":\"Labels\",\"colorsRange\":[{\"from\":0,\"to\":50},{\"from\":50,\"to\":75},{\"from\":75,\"to\":100}],\"invertColors\":false,\"labels\":{\"show\":true,\"color\":\"black\"},\"scale\":{\"show\":true,\"labels\":false,\"color\":\"rgba(105,112,125,0.2)\"},\"type\":\"meter\",\"style\":{\"bgWidth\":0.9,\"width\":0.9,\"mask\":false,\"bgMask\":false,\"maskBars\":50,\"bgFill\":\"rgba(105,112,125,0.2)\",\"bgColor\":true,\"subText\":\"\",\"fontSize\":60}}}}"
+    },
+    "id": "aaa791b0-945d-11eb-ae89-d5e2464fb8f1",
+    "migrationVersion": {
+        "visualization": "7.10.0"
+    },
+    "references": [
+        {
+            "id": "metricbeat-*",
+            "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+            "type": "index-pattern"
+        }
+    ]
+}
