@@ -35,12 +35,8 @@ def meta_model_interpreter(message):
   logger.debug("Final Dashboards Ready")
   if viz_tool == 'grafana':
     final_dashboards = load_grafana_templates(dashboards, dashboard_style)
-    for i in final_dashboards:
-      post_grafana_dashboard(i)
   else:
     final_dashboards = load_kibana_templates(dashboards, dashboard_style)
-    for i in final_dashboards:
-      post_kibana_dashboard(i)
   return dashboards
 
 
