@@ -18,7 +18,7 @@ def load_grafana_templates(dashboards, dashboard_style):
     else:
       raise ValueError("grafana-renderer - render_grafana_templates: error loading dashboard template")
     response = post_grafana_dashboard(rendered_dashboard)
-    dashboard_url = response["url"]
+    dashboard_url = response.url
   return rendered_dashboards
 
 

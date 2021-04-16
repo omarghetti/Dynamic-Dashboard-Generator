@@ -45,15 +45,14 @@ def create_dashboards_for_grafana(pages_list, dashboardstyle, model_uid):
     meta_page = find_page(ObjectId(page))
     for item in meta_page.items:
       meta_item = find_item(item['item'])
-      panels, last_grid_position = create_panels_for_grafana(meta_item.visualizations, item['width'], last_grid_position)
+      panels, last_grid_position = create_panels_for_grafana(meta_item.visualizations, item['width'], last_grid_position, dashboardstyle)
       panel_list.append(panels)
     concrete_dashboard = Meta_Dashboard(model_uid, dashboardstyle, panel_list)
     dashboardlist.append(concrete_dashboard)
-    last_height = 0
   return dashboardlist
 
 
-def create_dashboards_for_kibana(pages_list, dashboardstyle, model_uid):
+def create_dashboards_for_kibana(pages_list, dashboard_style, model_uid):
   dashboardlist = []
   last_grid_position = Grid(0, 0, 0, 0)
   for page in pages_list:
@@ -61,17 +60,17 @@ def create_dashboards_for_kibana(pages_list, dashboardstyle, model_uid):
     meta_page = find_page(ObjectId(page))
     for item in meta_page.items:
       meta_item = find_item(item['item'])
-      panels, last_grid_position = create_panels_for_kibana(meta_item.visualizations, item['width'], last_grid_position)
+      panels, last_grid_position = create_panels_for_kibana(meta_item.visualizations, item['width'], last_grid_position, dashboard_style)
       panel_list.append(panels)
-    concrete_dashboard = Meta_Dashboard(model_uid, dashboardstyle, panel_list)
+    concrete_dashboard = Meta_Dashboard(model_uid, dashboard_style, panel_list)
     dashboardlist.append(concrete_dashboard)
-    last_height = 0
   return dashboardlist
 
 
 ##Panel Creation, class Panel and Grid populated to create the support structure for OP and Templating
-def create_panels_for_grafana(items_list, width, last_grid_position):
+def create_panels_for_grafana(items_list, width, last_grid_position, dashboardstyle):
   support_list = []
+  position = 0
   if isinstance(items_list, dict):
     support_list.append(items_list)
   else:
@@ -87,18 +86,31 @@ def create_panels_for_grafana(items_list, width, last_grid_position):
     viz_to_process = find_viz(item['viz'])
     h = round((8 / 100.0) * item[
       'high_in_item'])
-    # we keep 8 as standard for height value to maintain readability of the panels
     w = round(
       (((24 / 100.0) * item['width_in_item']) / 100.0) * width)
     # grafana limit for width in dashboard is 24 columns
     grid = Grid(x, y, w, h)
-    if h == 8:
-      x += w
-    else:
-      y += h
-      if y % 8 == 0:
-        y -= 8
+    if dashboardstyle == 'PyramidalStyle':
+      if h == 8:
         x += w
+      else:
+        y += h
+        if y % 8 == 0:
+          if position == len(support_list) - 1:
+            y -= 8
+            x += w
+          else:
+            y -= h
+            x += w
+    else:
+      if h == 8:
+        x += w
+      else:
+        y += h
+        if y % 8 == 0:
+          y -= 8
+          x += w
+    position += 1
     next_panel_reference = Grid(x, y, w, h)
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process)
@@ -111,8 +123,9 @@ def create_panels_for_grafana(items_list, width, last_grid_position):
   return panels, next_panel_reference
 
 
-def create_panels_for_kibana(items_list, width, last_grid_position):
+def create_panels_for_kibana(items_list, width, last_grid_position, dashboard_style):
   support_list = []
+  position = 0
   if isinstance(items_list, dict):
     support_list.append(items_list)
   else:
@@ -130,13 +143,26 @@ def create_panels_for_kibana(items_list, width, last_grid_position):
       'high_in_item']) # we keep 8 as standard for height value to maintain readability of the panels
     w = round((((48 / 100.0) * item['width_in_item']) / 100.0) * width ) # kibana limit for width in dashboard is 24 columns
     grid = Grid(x, y, w, h)
-    if h == 15:
-      x += w
-    else:
-      y += h
-      if y % 15 == 0:
-        y -= 15
+    if dashboard_style == 'PyramidalStyle':
+      if h == 15:
         x += w
+      else:
+        y += h
+        if y % 15 == 0:
+          if position == len(support_list) - 1:
+            y -= 15
+            x += w
+          else:
+            y -= h
+            x += w
+    else:
+      if h == 15:
+        x += w
+      else:
+        y += h
+        if y % 15 == 0:
+          y -= 15
+          x += w
     next_panel_reference = Grid(x, y, w, h)
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_kibana(viz_to_process)
