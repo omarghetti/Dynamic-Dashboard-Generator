@@ -5,6 +5,7 @@ from owlready2 import *
 from src.app.repositories.CRUD import *
 import json
 
+
 def query_ontology_for_kibana(viz):
   onto = get_ontology("file://src/app/services/ontology/KPIOnto.owl").load()
   if isinstance(viz.kpis[0], SimpleKPI) or isinstance(viz.kpis[0], DerivedKPI):
@@ -12,12 +13,11 @@ def query_ontology_for_kibana(viz):
   else:
     kpi_to_process = find_KPI(viz.kpis[0])
   query_result = onto.search_one(acronym=kpi_to_process.name)
-  if query_result.unitOfMeasure == "#":
-    return "Graph"
-  elif query_result.unitOfMeasure == "Percent":
-    return "Gauge"
-  elif query_result.unitOfMeasure == "Mhz":
-    return "Graph"
+  if query_result.unitOfMeasure[0] == "#":
+    return "graph"
+  elif query_result.unitOfMeasure[0] == "Percent":
+    return "gauge"
+  elif query_result.unitOfMeasure[0] == "Mhz":
+    return "graph"
   else:
-    return "Graph"
-
+    return "graph"

@@ -1,9 +1,13 @@
 import os
 from src.app.utils.utils import load_template
+from src.app.services.http_dispatcher import post_kibana_visualizations, post_kibana_dashboard
+from src.app.utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 current_path = os.path.dirname(__file__)
 kibana_dash_path = os.path.join(current_path, 'templates/kibana_dashboard')
-kibana_panels_path = os.path.join(current_path, 'templates/kibana_panels')
+kibana_panels_path = os.path.join(current_path, 'templates/kibana_dashboard/kibana_panels')
 
 
 def load_kibana_templates(dashboards, dashboard_style):
@@ -15,6 +19,8 @@ def load_kibana_templates(dashboards, dashboard_style):
       rendered_dashboards.append(rendered_dashboard)
     else:
       raise ValueError("kibana-renderer - render_kibana_templates: error loading dashboard template")
+    response = post_kibana_dashboard(rendered_dashboard)
+    dashboard_url = response.url
   return rendered_dashboards
 
 
@@ -26,12 +32,15 @@ def render_kibana_templates(dash_template, item):
 
 def render_kibana_viz(panels):
   for item in panels:
-    template_name = 'kibana_'+item.panel_type+'.json'
-    panel_template = load_template(kibana_panels_path, template_name)
-    if panel_template is not None:
-      rendered_panel = panel_template.render(panel=item)
-    else:
-      raise ValueError("kibana-renderer - render_kibana_viz: error loading panel template")
+    for panel in item:
+      template_name = 'kibana_'+panel.panel_type+'.json'
+      panel_template = load_template(kibana_panels_path, template_name)
+      if panel_template is not None:
+        rendered_panel = panel_template.render(panel=panel)
+        response = post_kibana_visualizations(rendered_panel,panel.id)
+        logger.debug(response)
+      else:
+        raise ValueError("kibana-renderer - render_kibana_viz: error loading panel template")
 
 
 

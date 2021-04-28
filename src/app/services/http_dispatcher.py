@@ -22,7 +22,7 @@ def post_kibana_dashboard(final_dashboard):
   return response
 
 
-def post_kibana_visualizations(visualization):
-  postUrl = settings.KIBANA_DASHBOARD_URL + "api/saved_objects/visualization"
+def post_kibana_visualizations(visualization, vizId):
+  postUrl = settings.KIBANA_DASHBOARD_URL + "api/saved_objects/visualization/"+str(vizId)
   response = requests.post(url=postUrl, data=visualization, headers=kibanaHeaders)
   return response

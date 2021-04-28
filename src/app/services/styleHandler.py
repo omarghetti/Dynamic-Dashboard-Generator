@@ -131,17 +131,17 @@ def create_panels_for_kibana(items_list, width, last_grid_position, dashboard_st
   else:
     support_list = items_list.copy()
   panels = []
-  if last_grid_position.x == 24:
+  if last_grid_position.x == 48:
     x = 0
-    y = last_grid_position.y + 8
+    y = last_grid_position.y + 15
   else:
     x = last_grid_position.x
     y = last_grid_position.y
   for item in support_list:
     viz_to_process = find_viz(item['viz'])
     h = round((15 / 100.0) * item[
-      'high_in_item']) # we keep 8 as standard for height value to maintain readability of the panels
-    w = round((((48 / 100.0) * item['width_in_item']) / 100.0) * width ) # kibana limit for width in dashboard is 24 columns
+      'high_in_item'])
+    w = round((((48 / 100.0) * item['width_in_item']) / 100.0) * width)
     grid = Grid(x, y, w, h)
     if dashboard_style == 'PyramidalStyle':
       if h == 15:
@@ -164,6 +164,7 @@ def create_panels_for_kibana(items_list, width, last_grid_position, dashboard_st
           y -= 15
           x += w
     next_panel_reference = Grid(x, y, w, h)
+    position += 1
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_kibana(viz_to_process)
       new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)

@@ -4,7 +4,7 @@ import uuid
 
 class Panel:
   def __init__(self, title, kpi_related, grid_position, panel_type):
-    self.id = uuid.uuid1().int
+    self.id = uuid.uuid1()
     self.title = title
     self.kpi_related = kpi_related
     self.grid_position = grid_position
