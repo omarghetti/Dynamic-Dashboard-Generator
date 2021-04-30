@@ -4,12 +4,27 @@
     "title": "NGpaas_test2",
     "hits": 0,
     "description": "Test for NGpaas",
-    "panelsJSON":"[{% set count = namespace(value=0) %}{% for panel in panels %}{% for fpanel in panel %}{% set count.value=count.value + 1 %}{\"gridData\":{\"x\": \"{{ fpanel.grid_position.x }}\",\"y\": \"{{ fpanel.grid_position.y }}\",\"w\": \"{{ fpanel.grid_position.w }}\",\"h\": \"{{ fpanel.grid_position.h }}\",\"i\": \"{{ loop.index }}\"},\"version\": \"7.10.0\",\"panelIndex\": \"{{ loop.index }}\",\"type\": \"visualization\",\"id\": \"{{fpanel.id}}\",\"embeddableConfig\": {}}{% if not loop.last %},{% endif %}{% endfor %}{% if not loop.last %},{% endif %}{% endfor %}]",
-    "optionsJSON": "{\"darkTheme\":false,\"useMargins\":true,\"hidePanelTitles\":false}",
+    "panelsJSON":"[{% set count = namespace(value=0) %}{% for panel in panels %}{% for fpanel in panel %}{% set custom_uuid=uuid() %}{\"gridData\":{\"x\":{{ fpanel.grid_position.x }},\"y\": {{ fpanel.grid_position.y }},\"w\":{{fpanel.grid_position.w }},\"h\": {{ fpanel.grid_position.h }},\"i\": \"{{custom_uuid}}\"},\"version\": \"7.10.0\",\"panelIndex\": \"{{custom_uuid}}\",\"title\": \"{{fpanel.title}}\",\"embeddableConfig\": {\"title\": \"{{fpanel.title}}\"},\"panelRefName\": \"panel_{{ count.value }}\"}{% set count.value=count.value + 1 %}{% if not loop.last %},{% endif %}{% endfor %}{% if not loop.last %},{% endif %}{% endfor %}]",
+    "optionsJSON": "{\"darkTheme\":false,\"useMargins\":false,\"hidePanelTitles\":false}",
     "version": 1,
     "timeRestore": false,
     "kibanaSavedObjectMeta": {
       "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"lucene\"},\"filter\":[]}"
     }
-  }
+  },
+  "references": [
+    {% set count = namespace(value=0) %}
+    {% for panel in panels %}
+      {% for fpanel in panel  %}
+        {
+          "id": "{{fpanel.id}}",
+          "name":"panel_{{count.value}}",
+          "type": "visualization"
+        }
+        {% set count.value=count.value + 1 %}
+        {% if not loop.last %},{% endif %}
+      {% endfor %}
+      {% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
 }

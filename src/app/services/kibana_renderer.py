@@ -37,7 +37,7 @@ def render_kibana_viz(panels):
       panel_template = load_template(kibana_panels_path, template_name)
       if panel_template is not None:
         rendered_panel = panel_template.render(panel=panel)
-        response = post_kibana_visualizations(rendered_panel,panel.id)
+        response = post_kibana_visualizations(rendered_panel, panel.id)
         logger.debug(response)
       else:
         raise ValueError("kibana-renderer - render_kibana_viz: error loading panel template")
