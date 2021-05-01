@@ -3,7 +3,7 @@ from src.app.repositories.CRUD import *
 from src.app.utils.logger import get_logger
 from src.app.models.Metadashboard import Meta_Dashboard
 from src.app.models.grid_model import Grid
-from src.app.models.panel import Panel
+from src.app.models.panel import GrafanaPanel, KibanaPanel
 from src.app.services.grafana_ontology_processor import query_ontology_for_grafana
 from src.app.services.kibana_ontology_processor import query_ontology_for_kibana
 from bson import ObjectId
@@ -114,10 +114,10 @@ def create_panels_for_grafana(items_list, width, last_grid_position, dashboardst
     next_panel_reference = Grid(x, y, w, h)
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process)
-      new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
+      new_panel = GrafanaPanel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
     elif isinstance(viz_to_process, bm.ComposedVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process.summary_visualization)
-      new_panel = Panel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis, grid
+      new_panel = GrafanaPanel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis, grid
                         , panel_name)
     panels.append(new_panel)
   return panels, next_panel_reference
@@ -167,10 +167,10 @@ def create_panels_for_kibana(items_list, width, last_grid_position, dashboard_st
     position += 1
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_kibana(viz_to_process)
-      new_panel = Panel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
+      new_panel = KibanaPanel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
     elif isinstance(viz_to_process, bm.ComposedVisualization):
       panel_name = query_ontology_for_kibana(viz_to_process.summary_visualization)
-      new_panel = Panel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
+      new_panel = KibanaPanel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
                         grid, panel_name)
     panels.append(new_panel)
   return panels, next_panel_reference

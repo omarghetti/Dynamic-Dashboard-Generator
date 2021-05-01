@@ -5,7 +5,7 @@
     "hits": 0,
     "description": "Test for NGpaas",
     "panelsJSON":"[{% set count = namespace(value=0) %}{% for panel in panels %}{% for fpanel in panel %}{% set custom_uuid=uuid() %}{\"gridData\":{\"x\":{{ fpanel.grid_position.x }},\"y\": {{ fpanel.grid_position.y }},\"w\":{{fpanel.grid_position.w }},\"h\": {{ fpanel.grid_position.h }},\"i\": \"{{custom_uuid}}\"},\"version\": \"7.10.0\",\"panelIndex\": \"{{custom_uuid}}\",\"title\": \"{{fpanel.title}}\",\"embeddableConfig\": {\"title\": \"{{fpanel.title}}\"},\"panelRefName\": \"panel_{{ count.value }}\"}{% set count.value=count.value + 1 %}{% if not loop.last %},{% endif %}{% endfor %}{% if not loop.last %},{% endif %}{% endfor %}]",
-    "optionsJSON": "{\"darkTheme\":false,\"useMargins\":false,\"hidePanelTitles\":false}",
+    "optionsJSON": "{\"darkTheme\":false,\"useMargins\":true,\"hidePanelTitles\":false}",
     "version": 1,
     "timeRestore": false,
     "kibanaSavedObjectMeta": {
