@@ -8,9 +8,7 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "links": [
-      {% if %}
-    ],
+    "links": [],
     "panels":
     [
       {% for panel in panels %}
@@ -41,8 +39,8 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "test-dashboard-pyramid",
-    "uid": null,
+    "title": "dashboard_{{dashboard.dashboard_id}}",
+    "uid": "{{dashboard.dashboard_id}}",
     "version": 1
   }
 }

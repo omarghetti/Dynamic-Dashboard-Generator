@@ -10,7 +10,7 @@ grafana_panels_path = os.path.join(current_path, 'templates/grafana_panels')
 def load_grafana_templates(dashboards, dashboard_style):
   rendered_dashboards = []
   dashboard_url = ""
-  for item in reversed(dashboards):
+  for item in dashboards:
     dash_template = load_template(grafana_dash_path, 'grafana_dashboard.json')
     if dash_template is not None:
       rendered_dashboard = render_grafana_templates(dash_template, item, dashboard_url)

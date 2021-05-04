@@ -12,7 +12,7 @@ kibana_panels_path = os.path.join(current_path, 'templates/kibana_dashboard/kiba
 
 def load_kibana_templates(dashboards, dashboard_style):
   rendered_dashboards = []
-  for item in reversed(dashboards):
+  for item in dashboards:
     dash_template = load_template(kibana_dash_path, 'kibana_dashboard.json')
     if dash_template is not None:
       rendered_dashboard = render_kibana_templates(dash_template, item)

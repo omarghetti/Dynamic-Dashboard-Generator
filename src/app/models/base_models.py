@@ -47,6 +47,8 @@ class DashboardItem(MongoModel):
 
 class DashboardPage(MongoModel):
   items = fields.ListField()
+  link_son = fields.ListField()
+  link_father = fields.ListField()
 
   class Meta:
     connection_alias = "dynamic_dashboard_generator"
