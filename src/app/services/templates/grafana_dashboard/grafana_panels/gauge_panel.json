@@ -26,7 +26,7 @@
         "x": {{panel.grid_position.x}},
         "y": {{panel.grid_position.y}}
       },
-      "id": {{panel.id}},
+      "id":{{panel.id}},
       "options": {
         "reduceOptions": {
           "calcs": [
