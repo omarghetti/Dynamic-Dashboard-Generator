@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87ec965e-1a26-4465-949a-14072c2615c3" name="Default Changelist" comment="added multipage tests [PASSED]">
+    <list default="true" id="87ec965e-1a26-4465-949a-14072c2615c3" name="Default Changelist" comment="added multipage tests Kibana [PASSED]">
+      <change afterPath="$PROJECT_DIR$/src/app/services/templates/kibana_dashboard/kibana_panels/kibana_links.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/message_decoded_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/message_decoded_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/Metadashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/Metadashboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/grafana_renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/grafana_renderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/http_dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/http_dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/kibana_renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/kibana_renderer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/styleHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/styleHandler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_dashboard.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_dashboard.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/links.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/links.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/templates/kibana_dashboard/kibana_dashboard.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/kibana_dashboard/kibana_dashboard.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620169600307</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added multipage tests Kibana [PASSED]">
+      <created>1620208733875</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1620208733876</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,27 +254,18 @@
     <MESSAGE value="Styling Fixes" />
     <MESSAGE value="Modified Panel Class for Multipage and for Multiple tool support" />
     <MESSAGE value="added multipage tests [PASSED]" />
-    <option name="LAST_COMMIT_MESSAGE" value="added multipage tests [PASSED]" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="jinja2-line">
-          <url>file://$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_dashboard.json</url>
-          <line>41</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="added multipage tests Kibana [PASSED]" />
+    <option name="LAST_COMMIT_MESSAGE" value="added multipage tests Kibana [PASSED]" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$NestingStyleHandler.coverage" NAME="NestingStyleHandler Coverage Results" MODIFIED="1620139919360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/app/services" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$ReapetedStyleHandler.coverage" NAME="ReapetedStyleHandler Coverage Results" MODIFIED="1611762533894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/app/services" />
+    <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$pytest_for_src_Test_message_decoded_test_test_decoded_message_multipage_kibana.coverage" NAME="pytest for src.Test.message_decoded_test.test_decoded_message_multipage_kibana Coverage Results" MODIFIED="1620221374265" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$pytest_for_message_decoded_test_test_decoded_message_grafana.coverage" NAME="pytest for message_decoded_test.test_decoded_message_grafana Coverage Results" MODIFIED="1619881042131" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$message_decoded.coverage" NAME="message_decoded_test Coverage Results" MODIFIED="1611765561429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Test" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$PyramidStyleHandler.coverage" NAME="PyramidStyleHandler Coverage Results" MODIFIED="1620139841820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/app/services" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$dashboard.coverage" NAME="dashboard Coverage Results" MODIFIED="1618047143995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/app/services" />
-    <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$test_decoded_message_multipage_grafana.coverage" NAME="test_decoded_message_multipage_grafana Coverage Results" MODIFIED="1620208585609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$test_decoded_message_multipage_grafana.coverage" NAME="test_decoded_message_multipage_grafana Coverage Results" MODIFIED="1620213000501" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$pytest_for_kibana_message.coverage" NAME="pytest for kibana message Coverage Results" MODIFIED="1619880479048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$message_decoded_test.coverage" NAME="message_decoded_test Coverage Results" MODIFIED="1614938867560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Test" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$pytest_for_message_decoded_test_test_decoded_message.coverage" NAME="pytest for message_decoded_test.test_decoded_message Coverage Results" MODIFIED="1615461768064" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

@@ -1,0 +1,13 @@
+{
+    "attributes": {
+        "description": "",
+        "kibanaSavedObjectMeta": {
+            "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+        },
+        "title": "links",
+        "uiStateJSON": "{}",
+        "version": 1,
+        "visState": "{\"title\":\"links \",\"type\":\"markdown\",\"aggs\":[],\"params\":{\"fontSize\":12,\"openLinksInNewTab\":true,\"markdown\":\"{% for link in links %}[Dashboard_{{link}}](#/dashboard/{{link}}) |{% endfor %}\"}}"
+    },
+    "references": []
+}

@@ -14,7 +14,7 @@ class Meta_Dashboard:
 class Grafana_Dashboard(Meta_Dashboard):
   def __init__(self, dashboard_id, dashboard_style, panels, links):
     super().__init__(dashboard_id, dashboard_style, panels)
-    self.link = links
+    self.links = links
 
 
 class Kibana_Dashboard(Meta_Dashboard):

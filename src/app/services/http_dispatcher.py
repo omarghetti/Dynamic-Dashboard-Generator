@@ -16,8 +16,8 @@ def post_grafana_dashboard(final_dashboard):
   return response
 
 
-def post_kibana_dashboard(final_dashboard):
-  postUrl = settings.KIBANA_DASHBOARD_URL + "api/saved_objects/dashboard"
+def post_kibana_dashboard(final_dashboard, dashId):
+  postUrl = settings.KIBANA_DASHBOARD_URL + "api/saved_objects/dashboard/" + str(dashId)
   response = requests.post(url=postUrl, data=final_dashboard, headers=kibanaHeaders)
   return response
 

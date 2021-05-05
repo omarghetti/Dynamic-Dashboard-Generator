@@ -23,7 +23,7 @@ def load_grafana_templates(dashboards, dashboard_style):
 
 
 def render_grafana_templates(dash_to_render, concrete_dash, dashboard_url):
-  rendered_dashboard = dash_to_render.render(panels=concrete_dash.panels, dashboard=concrete_dash, url=dashboard_url)
+  rendered_dashboard = dash_to_render.render(panels=concrete_dash.panels, dashboard=concrete_dash, links=concrete_dash.links, url=dashboard_url)
   return rendered_dashboard
 
 

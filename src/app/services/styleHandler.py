@@ -1,7 +1,7 @@
 import src.app.models.base_models as bm
 from src.app.repositories.CRUD import *
 from src.app.utils.logger import get_logger
-from src.app.models.Metadashboard import Meta_Dashboard, Grafana_Dashboard, Kibana_Dashboard
+from src.app.models.Metadashboard import Grafana_Dashboard, Kibana_Dashboard
 from src.app.models.grid_model import Grid
 from src.app.models.panel import GrafanaPanel, KibanaPanel
 from src.app.services.grafana_ontology_processor import query_ontology_for_grafana
@@ -47,14 +47,14 @@ def create_dashboards_for_grafana(pages_list, dashboardstyle, model_uid):
       if dashboardstyle != 'NestedStyle':
         meta_item = find_item(item['item'])
         panels, last_grid_position = create_panels_for_grafana(meta_item.visualizations, item['width'],
-                                                              last_grid_position, dashboardstyle)
+                                                               last_grid_position, dashboardstyle)
         panel_list.append(panels)
       else:
         meta_item = find_item(item)
         panels, last_grid_position = create_panels_for_grafana(meta_item.visualizations, 100,
-                                                              last_grid_position, dashboardstyle)
+                                                               last_grid_position, dashboardstyle)
         panel_list.append(panels)
-    concrete_dashboard = Grafana_Dashboard(page, dashboardstyle, panel_list, [])
+    concrete_dashboard = Grafana_Dashboard(page, dashboardstyle, panel_list, meta_page.link_son)
     dashboardlist.append(concrete_dashboard)
   return dashboardlist
 
@@ -62,7 +62,10 @@ def create_dashboards_for_grafana(pages_list, dashboardstyle, model_uid):
 def create_dashboards_for_kibana(pages_list, dashboard_style, model_uid):
   dashboardlist = []
   for page in pages_list:
-    last_grid_position = Grid(0, 0, 0, 0)
+    if dashboard_style != 'NestedStyle':
+      last_grid_position = Grid(0, 0, 0, 0)
+    else:
+      last_grid_position = Grid(48, 15, 0, 0)
     panel_list = []
     meta_page = find_page(ObjectId(page))
     for item in meta_page.items:
@@ -76,7 +79,9 @@ def create_dashboards_for_kibana(pages_list, dashboard_style, model_uid):
         panels, last_grid_position = create_panels_for_kibana(meta_item.visualizations, 100,
                                                               last_grid_position, dashboard_style)
         panel_list.append(panels)
-    concrete_dashboard = Kibana_Dashboard(page, dashboard_style, panel_list, [])
+    if dashboard_style == 'NestedStyle' and meta_page.link_son != []:
+      panel_list.insert(0, {KibanaPanel("", "", Grid(0, 0, 48, 2), 'links')})
+    concrete_dashboard = Kibana_Dashboard(page, dashboard_style, panel_list, meta_page.link_son)
     dashboardlist.append(concrete_dashboard)
   return dashboardlist
 
@@ -131,8 +136,9 @@ def create_panels_for_grafana(items_list, width, last_grid_position, dashboardst
       new_panel = GrafanaPanel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
     elif isinstance(viz_to_process, bm.ComposedVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process.summary_visualization)
-      new_panel = GrafanaPanel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis, grid
-                        , panel_name)
+      new_panel = GrafanaPanel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
+                               grid
+                               , panel_name)
     panels.append(new_panel)
   return panels, next_panel_reference
 
@@ -185,6 +191,6 @@ def create_panels_for_kibana(items_list, width, last_grid_position, dashboard_st
     elif isinstance(viz_to_process, bm.ComposedVisualization):
       panel_name = query_ontology_for_kibana(viz_to_process.summary_visualization)
       new_panel = KibanaPanel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
-                        grid, panel_name)
+                              grid, panel_name)
     panels.append(new_panel)
   return panels, next_panel_reference

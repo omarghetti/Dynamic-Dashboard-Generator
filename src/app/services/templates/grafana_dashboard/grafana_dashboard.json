@@ -8,7 +8,14 @@
     "editable": true,
     "gnetId": null,
     "graphTooltip": 0,
-    "links": [],
+    "links": [
+      {% for link in links %}
+        {% with link=link %}
+          {% include 'links.json' %}
+        {% endwith %}
+        {% if not loop.last %},{% endif %}
+      {% endfor %}
+    ],
     "panels":
     [
       {% for panel in panels %}

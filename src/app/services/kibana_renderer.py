@@ -19,24 +19,24 @@ def load_kibana_templates(dashboards, dashboard_style):
       rendered_dashboards.append(rendered_dashboard)
     else:
       raise ValueError("kibana-renderer - render_kibana_templates: error loading dashboard template")
-    response = post_kibana_dashboard(rendered_dashboard)
+    response = post_kibana_dashboard(rendered_dashboard, item.dashboard_id)
     dashboard_url = response.url
   return rendered_dashboards
 
 
 def render_kibana_templates(dash_template, item):
-  render_kibana_viz(item.panels)
+  render_kibana_viz(item.panels, item)
   rendered_dashboard = dash_template.render(panels=item.panels, dashboard=item)
   return rendered_dashboard
 
 
-def render_kibana_viz(panels):
+def render_kibana_viz(panels, dashboard):
   for item in panels:
     for panel in item:
       template_name = 'kibana_'+panel.panel_type+'.json'
       panel_template = load_template(kibana_panels_path, template_name)
       if panel_template is not None:
-        rendered_panel = panel_template.render(panel=panel)
+        rendered_panel = panel_template.render(panel=panel, links=dashboard.links)
         response = post_kibana_visualizations(rendered_panel, panel.id)
         logger.debug(response)
       else:

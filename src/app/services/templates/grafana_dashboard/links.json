@@ -1,5 +1,5 @@
         {
           "targetBlank": true,
-          "title": "{{}}",
-          "url": "http://localhost:3000/d/V91YH-UMz/test-dashboard?orgId=1"
+          "title": "dashboard_{{link}}",
+          "url": "http://localhost:3000/d/{{link}}/dashboard_{{link}}?orgId=1"
         }
