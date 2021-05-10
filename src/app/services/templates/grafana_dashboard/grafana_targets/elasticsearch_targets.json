@@ -1,0 +1,40 @@
+{
+  "bucketAggs":
+  [
+    {
+      "field": "{{aggregation.field }}",
+      "id": "{{aggregation.aggregation_id }}",
+      "settings":
+      {
+          "min_doc_count": 1,
+          "order": "{{aggregation.aggregation_value.order }}",
+          "orderBy": "{{aggregation.aggregation_value.order_by }}",
+          "size": "{{aggregation.aggregation_value.size }}"
+      },
+      "type": "terms"
+    },
+    {
+      "field": "",
+      "id": "",
+      "settings": {
+        "interval": "",
+        "min_doc_count": 0,
+        "trimEdges": 0
+      },
+      "type": "date_histogram"
+    }
+  ],
+  "metrics":
+  [
+    {
+      "field": "{{ metric.field }}",
+      "id": "{{ metric.metric_id }}",
+      "type": "{{ metric.operator }}",
+      "meta": {},
+      "settings": {}
+    }
+  ],
+  "query": "{{ query.select }}",
+  "refId": "{{ query.query_id }}",
+  "timeField": "@timestamp"
+}

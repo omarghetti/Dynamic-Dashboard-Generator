@@ -1,0 +1,5 @@
+{
+    "attributes": {
+      "title": "{{ wildcard_index.wildcard_index_value }}"
+    }
+}

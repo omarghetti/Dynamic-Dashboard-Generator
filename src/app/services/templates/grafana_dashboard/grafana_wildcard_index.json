@@ -1,0 +1,13 @@
+{
+    "name":"Grafana_Wildcard_{{dashboard.dashboard_id}}",
+    "type":"elasticsearch",
+      "database": "{{ wildcard_index.name }}",
+    "url":"{{ datasource_url }}",
+    "access":"proxy",
+    "jsonData": {
+      "esVersion": 60,
+      "keepCookies": [],
+      "maxConcurrentShardRequests": 256,
+      "timeField": "@timestamp"
+    }
+  }

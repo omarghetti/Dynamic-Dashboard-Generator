@@ -1,0 +1,9 @@
+{
+    "expr": "",
+    "format": "time_series",
+    "interval": "",
+    "intervalFactor": 2,
+    "legendFormat": "",
+    "refId": "",
+    "step": 10
+}
