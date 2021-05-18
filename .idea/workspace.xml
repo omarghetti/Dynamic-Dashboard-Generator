@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87ec965e-1a26-4465-949a-14072c2615c3" name="Default Changelist" comment="Added Templates and Models for adding and querying datasources">
-      <change afterPath="$PROJECT_DIR$/src/app/models/elasticsearch_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/models/prometheus_models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/services/query_dictionary/ES_queryref.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/services/query_dictionary/prometheus_queryref.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/services/query_generator.py" afterDir="false" />
+    <list default="true" id="87ec965e-1a26-4465-949a-14072c2615c3" name="Default Changelist" comment="Added ES models to create queries">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/message_decoded_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/message_decoded_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/models/panel.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/panel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/elasticsearch_models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/elasticsearch_models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/services/MetaModelInterpreter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/MetaModelInterpreter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/grafana_renderer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/grafana_renderer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/styleHandler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/styleHandler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_dashboard.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_dashboard.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/query_dictionary/ES_queryref.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/query_dictionary/ES_queryref.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/query_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/query_generator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_panels/gauge_panel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_panels/gauge_panel.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_panels/graph_panel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_panels/graph_panel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_targets/prometheus_targets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_targets/prometheus_targets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/grafana/provisioning/datasources/datasource.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/grafana/provisioning/datasources/datasource.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/prometheus/prometheus.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/prometheus/prometheus.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_targets/elasticsearch_targets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/services/templates/grafana_dashboard/grafana_targets/elasticsearch_targets.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +45,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
-  <component name="RunManager" selected="Python tests.test_decoded_message_multipage_grafana">
+  <component name="RunManager" selected="Python tests.pytest for message_decoded_test.test_decoded_message_multipage_grafana_ES">
     <configuration name="pytest for kibana message" type="tests" factoryName="py.test">
       <module name="dynamic-dashboards-generator" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,6 +135,37 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for message_decoded_test.test_decoded_message_multipage_grafana_ES" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="dynamic-dashboards-generator" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="SIMPLE_SETTINGS" value="src.app.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;message_decoded_test.test_decoded_message_multipage_grafana_ES&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest for src.Test.message_decoded_test.test_decoded_message_multipage_kibana" type="tests" factoryName="py.test" nameIsGenerated="true">
       <module name="dynamic-dashboards-generator" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -211,9 +234,11 @@
       <item itemvalue="Python tests.pytest for src.Test.message_decoded_test.test_decoded_message_multipage_kibana" />
       <item itemvalue="Python tests.pytest for message_decoded_test.test_decoded_message_grafana" />
       <item itemvalue="Python tests.pytest for message_decoded_test.test_decoded_message_multipage_grafana" />
+      <item itemvalue="Python tests.pytest for message_decoded_test.test_decoded_message_multipage_grafana_ES" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for message_decoded_test.test_decoded_message_multipage_grafana_ES" />
         <item itemvalue="Python tests.pytest for message_decoded_test.test_decoded_message_multipage_grafana" />
         <item itemvalue="Python tests.pytest for message_decoded_test.test_decoded_message_grafana" />
       </list>
@@ -230,7 +255,7 @@
       <workItem from="1618051275776" duration="14627000" />
       <workItem from="1619358605594" duration="1817000" />
       <workItem from="1619609441819" duration="27121000" />
-      <workItem from="1621263353818" duration="17747000" />
+      <workItem from="1621263353818" duration="27227000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed PyramidalStyle and NestedStyle Panel Generation">
       <created>1618568657600</created>
@@ -295,7 +320,21 @@
       <option name="project" value="LOCAL" />
       <updated>1620634562247</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Prometheus Integration Completed and Tested [PASSED]">
+      <created>1621346639682</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621346639682</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Added ES models to create queries">
+      <created>1621352881564</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1621352881564</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -323,7 +362,9 @@
     <MESSAGE value="Improvements to multipage logic [TESTED]" />
     <MESSAGE value="Added Datasources Configurations" />
     <MESSAGE value="Added Templates and Models for adding and querying datasources" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Templates and Models for adding and querying datasources" />
+    <MESSAGE value="Prometheus Integration Completed and Tested [PASSED]" />
+    <MESSAGE value="Added ES models to create queries" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added ES models to create queries" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$NestingStyleHandler.coverage" NAME="NestingStyleHandler Coverage Results" MODIFIED="1620139919360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/app/services" />
@@ -337,6 +378,7 @@
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$pytest_for_message_decoded_test_test_decoded_message_grafana.coverage" NAME="pytest for message_decoded_test.test_decoded_message_grafana Coverage Results" MODIFIED="1621262213763" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$message_decoded.coverage" NAME="message_decoded_test Coverage Results" MODIFIED="1611765561429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Test" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$PyramidStyleHandler.coverage" NAME="PyramidStyleHandler Coverage Results" MODIFIED="1620139841820" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/app/services" />
+    <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$pytest_for_message_decoded_test_test_decoded_message_multipage_grafana_ES.coverage" NAME="pytest for message_decoded_test.test_decoded_message_multipage_grafana_ES Coverage Results" MODIFIED="1621375534895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$pytest_for_kibana_message.coverage" NAME="pytest for kibana message Coverage Results" MODIFIED="1619880479048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/dynamic_dashboards_generator$message_decoded_test.coverage" NAME="message_decoded_test Coverage Results" MODIFIED="1614938867560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/Test" />
   </component>

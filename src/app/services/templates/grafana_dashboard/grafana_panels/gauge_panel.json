@@ -41,7 +41,7 @@
       "pluginVersion": "7.3.4",
       "targets":
       [
-          {% if datasource == 'elasticsearch' %}
+          {% if datasource == 'Elasticsearch' %}
             {% with queryList=panel.queryList %}
               {% include 'grafana_targets/elasticsearch_targets.json' %}
             {% endwith %}

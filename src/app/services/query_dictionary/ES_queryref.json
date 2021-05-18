@@ -1,13 +1,13 @@
 {
-  "CPU Load": "rate(node_load1[1m])",
-  "CPU frequency": "rate(node_cpu_seconds_total{mode=\"idle\"}[1m])",
-  "Concurrent_Users": "go_goroutines",
-  "CPU Summary": "avg(rate(node_cpu_seconds_total[1m]))",
-  "Data Recieved": "rate(node_network_receive_bytes_total{device=\"en0\"}[1m])",
-  "Data Sent": "rate(node_network_transmit_bytes_total{device=\"en0\"}[1m])",
-  "Disk Usage": "rate(node_filesystem_free_bytes{device=\"/dev/disk1s1\",fstype=\"apfs\",mountpoint=\"/System/Volumes/Update/mnt1\"}[1m])",
-  "Memory Frequency": "rate(node_memory_total_bytes[1m])",
-  "Memory Load": "rate(node_memory_active_bytes[1m])",
-  "Network Stats": "avg(rate(node_network_recieve_bytes_total[1m]))",
-  "Operation_per_Minute": "rate(promhttp_metric_handler_requests_total{code=\"200\"})"
+  "CPU Load": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.cpu.system.pct\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "CPU frequency": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.cpu.idle.pct\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Concurrent_Users": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.users.leader\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "CPU summary": "{\"select\":\"*\",\"metric\":{\"operator\":\"avg\",\"field\":\"system.cpu.system.pct\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Data Received": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.network.in.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Data Sent": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.network.out.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Disk Usage": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.diskio.read.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Memory Frequency": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.memory.actual.used.pct\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Memory Load": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.memory.actual.used.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Network Stats": "{\"select\":\"*\",\"metric\":{\"operator\":\"avg\",\"field\":\"system.network.out.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Operations_Per_Minute": "{\"select\":\"*\",\"metric\":{\"operator\":\"avg\",\"field\":\"system.diskio.iostat.read.request.per_sec\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}"
 }

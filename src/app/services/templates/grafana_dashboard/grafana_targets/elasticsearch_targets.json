@@ -1,40 +1,35 @@
-{
-  "bucketAggs":
-  [
-    {
-      "field": "{{aggregation.field }}",
-      "id": "{{aggregation.aggregation_id }}",
-      "settings":
-      {
-          "min_doc_count": 1,
-          "order": "{{aggregation.aggregation_value.order }}",
-          "orderBy": "{{aggregation.aggregation_value.order_by }}",
-          "size": "{{aggregation.aggregation_value.size }}"
-      },
-      "type": "terms"
-    },
-    {
-      "field": "",
-      "id": "",
-      "settings": {
-        "interval": "",
-        "min_doc_count": 0,
-        "trimEdges": 0
-      },
-      "type": "date_histogram"
-    }
-  ],
-  "metrics":
-  [
-    {
-      "field": "{{ metric.field }}",
-      "id": "{{ metric.metric_id }}",
-      "type": "{{ metric.operator }}",
-      "meta": {},
-      "settings": {}
-    }
-  ],
-  "query": "{{ query.select }}",
-  "refId": "{{ query.query_id }}",
-  "timeField": "@timestamp"
-}
+{% for query in queryList %}
+        {
+          "bucketAggs": [
+            {% for aggregation in query.aggregations %}
+            {
+              "field": "{{aggregation.field}}",
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": 0,
+                "trimEdges": 0
+              },
+              "type": "date_histogram"
+            }
+            {% if not loop.last %},{% endif %}
+            {% endfor %}
+          ],
+          "metrics": [
+            {% for metric in query.metrics %}
+            {
+              "field": "{{metric.field}}",
+              "id": "1",
+              "meta": {},
+              "settings": {},
+              "type": "{{metric.operator}}"
+            }
+            {% if not loop.last %},{% endif %}
+            {% endfor %}
+          ],
+          "query": "{{query.select}}",
+          "refId": "{{"ABCDEFGHIJKLMNOPQRSTUVZ"[loop.index0]}}",
+          "timeField": "@timestamp"
+        }
+{% if not loop.last %},{% endif %}
+{% endfor %}

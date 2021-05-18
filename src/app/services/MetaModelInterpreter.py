@@ -35,12 +35,12 @@ def meta_model_interpreter(message):
   logger.debug("Panels Created")
   logger.debug("Final Dashboards Ready")
   if viz_tool == 'grafana':
-    if selected_datasource == 'elasticsearch':
-      final_dashboards = load_grafana_templates(dashboards, dashboard_style, 'elasticsearch')
+    if selected_datasource == 'Elasticsearch':
+      final_dashboards = load_grafana_templates(dashboards, dashboard_style, 'Elasticsearch')
     if selected_datasource == 'Prometheus':
       final_dashboards = load_grafana_templates(dashboards, dashboard_style, 'Prometheus')
   else:
-    final_dashboards = load_kibana_templates(dashboards, dashboard_style, 'elasticsearch')
+    final_dashboards = load_kibana_templates(dashboards, dashboard_style, 'Elasticsearch')
   return dashboards
 
 

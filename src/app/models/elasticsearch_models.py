@@ -2,17 +2,15 @@ import os
 
 
 class ESAggregations():
-  def __init__(self, field, value):
+  def __init__(self, field):
     self.field = field
-    self.value = value
 
     class Meta:
       connection_alias = os.environ.get('APP_NAME')
 
 
 class ESMetric():
-  def __init__(self, value, operator, field):
-    self.value = value
+  def __init__(self, operator, field):
     self.field = field
     self.operator = operator
 
