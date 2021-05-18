@@ -1,5 +1,5 @@
     {
-      "datasource": null,
+      "datasource": "{{datasource}}",
       "fieldConfig": {
         "defaults": {
           "custom": {},
@@ -39,11 +39,17 @@
         "showThresholdMarkers": true
       },
       "pluginVersion": "7.3.4",
-      "targets": [
-        {
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
+      "targets":
+      [
+          {% if datasource == 'elasticsearch' %}
+            {% with queryList=panel.queryList %}
+              {% include 'grafana_targets/elasticsearch_targets.json' %}
+            {% endwith %}
+          {% elif datasource == 'Prometheus' %}
+            {% with queryList=panel.queryList %}
+              {% include 'grafana_targets/prometheus_targets.json' %}
+            {% endwith %}
+          {% endif %}
       ],
       "timeFrom": null,
       "timeShift": null,

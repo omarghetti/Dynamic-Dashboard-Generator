@@ -15,6 +15,7 @@ logger = get_logger(__name__)
 def meta_model_interpreter(message):
   meta_model = json.loads(message)
   viz_tool = os.environ.get('SELECTED_TOOL')
+  selected_datasource = os.environ.get('SELECTED_DATASOURCE')
   dashboard_style = 'null'
   model_uid = 'null'
   dashboards = []
@@ -25,18 +26,21 @@ def meta_model_interpreter(message):
     elif meta_model_key == "dashboardpages":
       dashboard_style = check_dashboard_visualization_style(meta_model_value)
       if viz_tool == 'grafana':
-        dashboards = create_dashboards_for_grafana(meta_model_value, dashboard_style, model_uid)
+        dashboards = create_dashboards_for_grafana(meta_model_value, dashboard_style, model_uid, selected_datasource)
       else:
-        dashboards = create_dashboards_for_kibana(meta_model_value, dashboard_style, model_uid)
+        dashboards = create_dashboards_for_kibana(meta_model_value, dashboard_style, model_uid, selected_datasource)
   logger.debug("Meta Model Interpreted ")
   logger.debug("Style Recognized!")
   logger.debug(dashboard_style)
   logger.debug("Panels Created")
   logger.debug("Final Dashboards Ready")
   if viz_tool == 'grafana':
-    final_dashboards = load_grafana_templates(dashboards, dashboard_style)
+    if selected_datasource == 'elasticsearch':
+      final_dashboards = load_grafana_templates(dashboards, dashboard_style, 'elasticsearch')
+    if selected_datasource == 'Prometheus':
+      final_dashboards = load_grafana_templates(dashboards, dashboard_style, 'Prometheus')
   else:
-    final_dashboards = load_kibana_templates(dashboards, dashboard_style)
+    final_dashboards = load_kibana_templates(dashboards, dashboard_style, 'elasticsearch')
   return dashboards
 
 

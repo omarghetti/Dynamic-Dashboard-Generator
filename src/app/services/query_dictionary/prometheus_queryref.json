@@ -1,0 +1,13 @@
+{
+  "CPU Load": "node_load1",
+  "CPU frequency": "rate(node_cpu_seconds_total{mode=\\\"idle\\\"}[5m])",
+  "Concurrent_Users": "go_goroutines",
+  "CPU summary": "rate(node_cpu_seconds_total[5m])",
+  "Data Received": "rate(node_network_receive_bytes_total{device=\\\"en0\\\"}[5m])",
+  "Data Sent": "rate(node_network_transmit_bytes_total{device=\\\"en0\\\"}[5m])",
+  "Disk Usage": "node_filesystem_free_bytes{device=\\\"/dev/disk1s1\\\",fstype=\\\"apfs\\\",mountpoint=\\\"/System/Volumes/Update/mnt1\\\"}",
+  "Memory Frequency": "rate(node_memory_total_bytes[5s])",
+  "Memory Load": "rate(node_memory_active_bytes[5s])",
+  "Network Stats": "avg(rate(node_network_receive_bytes_total[5m]))",
+  "Operations_Per_Minute": "promhttp_metric_handler_requests_total{code=\\\"200\\\"}"
+}

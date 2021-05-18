@@ -21,11 +21,11 @@
       {% for panel in panels %}
         {% for fpanel in panel %}
           {% if (fpanel.panel_type == 'Gauge') %}
-            {% with panel=fpanel %}
+            {% with panel=fpanel, datasource=datasource %}
               {% include 'grafana_panels/gauge_panel.json'  %}
             {% endwith %}
           {% elif (fpanel.panel_type == 'Graph') %}
-            {% with panel=fpanel %}
+            {% with panel=fpanel, datasource=datasource %}
               {% include 'grafana_panels/graph_panel.json'  %}
             {% endwith %}
           {% endif %}

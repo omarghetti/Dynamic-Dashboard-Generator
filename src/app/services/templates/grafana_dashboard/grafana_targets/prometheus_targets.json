@@ -1,9 +1,9 @@
-{
-    "expr": "",
-    "format": "time_series",
-    "interval": "",
-    "intervalFactor": 2,
-    "legendFormat": "",
-    "refId": "",
-    "step": 10
-}
+{% for query in queryList %}
+    {
+        "expr": "{{query.expression_query}}",
+        "format": "time_series",
+        "interval": "",
+        "legendFormat": "",
+        "refId": "{{ "ABCDEFGHIJKLMNOPQRSTUVZ"[loop.index0] }}"
+    }{% if not loop.last %},{% endif %}
+{% endfor %}

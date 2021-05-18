@@ -27,6 +27,7 @@ def test_decoded_message_kibana():
 
 def test_decoded_message_multipage_grafana():
   os.environ["SELECTED_TOOL"] = "grafana"
+  os.environ["SELECTED_DATASOURCE"] = "Prometheus"
   mongodb_connect(settings.MONGO_URI, connection_alias=settings.APP_NAME)
   message = "{\"_id\":\"60915f90f59830ef922e58fd\",\"dashboardpages\":[\"60915f8ff59830ef922e58f9\",\"60915f8ff59830ef922e58fa\",\"60915f8ff59830ef922e58fb\",\"60915f8ff59830ef922e58fc\"]}"
   dashboards = meta_model_interpreter(message)

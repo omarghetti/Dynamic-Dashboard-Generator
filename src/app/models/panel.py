@@ -1,5 +1,6 @@
 import os
 import uuid
+import random
 
 
 class Panel:
@@ -14,12 +15,14 @@ class Panel:
 
 
 class KibanaPanel(Panel):
-  def __init__(self, title, kpi_related, grid_position, panel_type):
+  def __init__(self, title, kpi_related, grid_position, panel_type, queryList):
     super().__init__(title, kpi_related, grid_position, panel_type)
     self.id = uuid.uuid4()
+    self.queryList = queryList
 
 
 class GrafanaPanel(Panel):
-  def __init__(self, title, kpi_related, grid_position, panel_type):
+  def __init__(self, title, kpi_related, grid_position, panel_type, queryList):
     super().__init__(title, kpi_related, grid_position, panel_type)
-    self.id = uuid.uuid4().int
+    self.id = random.randint(0, 100000)
+    self.queryList = queryList

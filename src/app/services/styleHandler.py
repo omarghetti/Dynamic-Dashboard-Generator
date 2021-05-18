@@ -1,5 +1,6 @@
 import src.app.models.base_models as bm
 from src.app.repositories.CRUD import *
+from src.app.services.query_generator import query_generator
 from src.app.utils.logger import get_logger
 from src.app.models.Metadashboard import Grafana_Dashboard, Kibana_Dashboard
 from src.app.models.grid_model import Grid
@@ -37,7 +38,7 @@ def check_dashboard_visualization_style(pages_list):
 ##cycling the meta-model to create the agnostic model to support final dashboard creation.
 # this agnostic model will be processed inside the ontology to create the
 # right panels for the final dashboard
-def create_dashboards_for_grafana(pages_list, dashboardstyle, model_uid):
+def create_dashboards_for_grafana(pages_list, dashboardstyle, model_uid, datasource):
   dashboardlist = []
   for page in pages_list:
     last_grid_position = Grid(0, 0, 0, 0)
@@ -47,19 +48,19 @@ def create_dashboards_for_grafana(pages_list, dashboardstyle, model_uid):
       if dashboardstyle != 'NestedStyle':
         meta_item = find_item(item['item'])
         panels, last_grid_position = create_panels_for_grafana(meta_item.visualizations, item['width'],
-                                                               last_grid_position, dashboardstyle)
+                                                               last_grid_position, dashboardstyle, datasource)
         panel_list.append(panels)
       else:
         meta_item = find_item(item)
         panels, last_grid_position = create_panels_for_grafana(meta_item.visualizations, 100,
-                                                               last_grid_position, dashboardstyle)
+                                                               last_grid_position, dashboardstyle, datasource)
         panel_list.append(panels)
     concrete_dashboard = Grafana_Dashboard(page, dashboardstyle, panel_list, meta_page.link_son)
     dashboardlist.append(concrete_dashboard)
   return dashboardlist
 
 
-def create_dashboards_for_kibana(pages_list, dashboard_style, model_uid):
+def create_dashboards_for_kibana(pages_list, dashboard_style, model_uid, datasource):
   dashboardlist = []
   for page in pages_list:
     if dashboard_style != 'NestedStyle':
@@ -72,12 +73,12 @@ def create_dashboards_for_kibana(pages_list, dashboard_style, model_uid):
       if dashboard_style != 'NestedStyle':
         meta_item = find_item(item['item'])
         panels, last_grid_position = create_panels_for_kibana(meta_item.visualizations, item['width'],
-                                                              last_grid_position, dashboard_style)
+                                                              last_grid_position, dashboard_style, datasource)
         panel_list.append(panels)
       else:
         meta_item = find_item(item)
         panels, last_grid_position = create_panels_for_kibana(meta_item.visualizations, 100,
-                                                              last_grid_position, dashboard_style)
+                                                              last_grid_position, dashboard_style, datasource)
         panel_list.append(panels)
     if dashboard_style == 'NestedStyle' and meta_page.link_son != []:
       panel_list.insert(0, {KibanaPanel("", "", Grid(0, 0, 48, 2), 'links')})
@@ -87,7 +88,7 @@ def create_dashboards_for_kibana(pages_list, dashboard_style, model_uid):
 
 
 ##Panel Creation, class Panel and Grid populated to create the support structure for OP and Templating
-def create_panels_for_grafana(items_list, width, last_grid_position, dashboardstyle):
+def create_panels_for_grafana(items_list, width, last_grid_position, dashboardstyle, datasource):
   support_list = []
   position = 0
   if isinstance(items_list, dict):
@@ -133,12 +134,14 @@ def create_panels_for_grafana(items_list, width, last_grid_position, dashboardst
     next_panel_reference = Grid(x, y, w, h)
     if isinstance(viz_to_process, bm.SimpleVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process)
-      new_panel = GrafanaPanel(viz_to_process.name, viz_to_process.kpis, grid, panel_name)
+      queryList = query_generator(viz_to_process, datasource)
+      new_panel = GrafanaPanel(viz_to_process.name, viz_to_process.kpis, grid, panel_name, queryList)
     elif isinstance(viz_to_process, bm.ComposedVisualization):
       panel_name = query_ontology_for_grafana(viz_to_process.summary_visualization)
+      queryList = query_generator(viz_to_process.summary_visualization, datasource)
       new_panel = GrafanaPanel(viz_to_process.summary_visualization.name, viz_to_process.summary_visualization.kpis,
                                grid
-                               , panel_name)
+                               , panel_name, queryList)
     panels.append(new_panel)
   return panels, next_panel_reference
 

@@ -3,7 +3,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "-- Grafana --",
+      "datasource": "{{datasource}}",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -45,11 +45,15 @@
       "stack": false,
       "steppedLine": false,
       "targets": [
-        {
-          "hide": false,
-          "queryType": "randomWalk",
-          "refId": "A"
-        }
+        {% if datasource == 'elasticsearch' %}
+          {% with queryList=panel.queryList %}
+            {% include './grafana_targets/elasticsearch_targets.json' %}
+          {% endwith %}
+        {% elif datasource == 'Prometheus' %}
+          {% with queryList=panel.queryList %}
+            {% include './grafana_targets/prometheus_targets.json' %}
+          {% endwith %}
+        {% endif %}
       ],
       "thresholds": [],
       "timeFrom": null,
