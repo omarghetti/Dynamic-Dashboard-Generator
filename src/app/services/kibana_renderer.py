@@ -10,7 +10,7 @@ kibana_dash_path = os.path.join(current_path, 'templates/kibana_dashboard')
 kibana_panels_path = os.path.join(current_path, 'templates/kibana_dashboard/kibana_panels')
 
 
-def load_kibana_templates(dashboards, dashboard_style):
+def load_kibana_templates(dashboards, dashboard_style, datasource):
   rendered_dashboards = []
   for item in dashboards:
     dash_template = load_template(kibana_dash_path, 'kibana_dashboard.json')

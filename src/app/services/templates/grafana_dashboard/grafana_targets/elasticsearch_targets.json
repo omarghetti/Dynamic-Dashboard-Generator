@@ -3,7 +3,7 @@
           "bucketAggs": [
             {% for aggregation in query.aggregations %}
             {
-              "field": "{{aggregation.field}}",
+              "field": "@{{aggregation.field}}",
               "id": "2",
               "settings": {
                 "interval": "auto",

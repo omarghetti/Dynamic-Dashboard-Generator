@@ -5,7 +5,7 @@
   "CPU summary": "{\"select\":\"*\",\"metric\":{\"operator\":\"avg\",\"field\":\"system.cpu.system.pct\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
   "Data Received": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.network.in.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
   "Data Sent": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.network.out.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
-  "Disk Usage": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.diskio.read.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
+  "Disk Usage": "{\"select\":\"*\",\"metric\":{\"operator\":\"avg\",\"field\":\"system.diskio.read.count\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
   "Memory Frequency": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.memory.actual.used.pct\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
   "Memory Load": "{\"select\":\"*\",\"metric\":{\"operator\":\"max\",\"field\":\"system.memory.actual.used.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
   "Network Stats": "{\"select\":\"*\",\"metric\":{\"operator\":\"avg\",\"field\":\"system.network.out.bytes\"},\"aggregations\":[{\"field\":\"timestamp\",\"date_histogram\":{\"interval\":\"1m\"}}]}",
